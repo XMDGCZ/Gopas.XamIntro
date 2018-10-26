@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Gopas.XamIntro.BaseMasterDetailPage;
+using Gopas.XamIntro.BaseMasterDetailPage.Pages;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +13,7 @@ namespace Gopas.XamIntro
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Master();
         }
 
         protected override void OnStart()
