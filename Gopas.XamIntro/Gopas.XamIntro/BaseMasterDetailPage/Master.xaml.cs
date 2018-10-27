@@ -1,6 +1,7 @@
 ﻿using Gopas.XamIntro.BaseMasterDetailPage.Pages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,13 +25,18 @@ namespace Gopas.XamIntro.BaseMasterDetailPage
             var item = e.SelectedItem as MasterMenuItemVM;
             if (item == null)
                 return;
+            if (item.TargetType != null)
+            {
+                var page = (Page)Activator.CreateInstance(item.TargetType);
+                page.Title = item.Title;
 
-            var page = (Page)Activator.CreateInstance(item.TargetType);
-            page.Title = item.Title;
-
-            Detail = new NavigationPage(page);
-            IsPresented = false;
-
+                Detail = new NavigationPage(page);
+                IsPresented = false;
+            }
+            else
+            {
+                Debug.WriteLine("Could not navigate, target type is null");
+            }
             MasterPage.ListView.SelectedItem = null;
         }
     }

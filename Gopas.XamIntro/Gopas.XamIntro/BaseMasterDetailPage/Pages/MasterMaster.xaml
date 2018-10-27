@@ -40,7 +40,7 @@
         <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="35,10,0,0">
+                        <StackLayout Padding="35,5,0,5">
                             <Label Text="{Binding Title}" />
                         </StackLayout>
                     </ViewCell>
