@@ -22,7 +22,7 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.Pages
         {
             InitializeComponent();
 
-            BindingContext = new MasterMasterViewModel();
+            BindingContext = new MasterMasterVM();
             ListView = MenuItemsListView;
         }
     }
