@@ -10,11 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\absolute-and-relative.png" />
     <None Remove="Images\logo-final.png" />
     <None Remove="Images\stack-and-grid.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\absolute-and-relative.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\logo-final.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -30,6 +34,9 @@
   <ItemGroup>
     <Compile Update="BaseMasterDetailPage\VM\MasterMenuItemVM.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Course\1GUIComponents\AbsoluteAndRelativeLayout.xaml.cs">
+      <DependentUpon>AbsoluteAndRelativeLayout.xaml</DependentUpon>
     </Compile>
     <Compile Update="Course\1GUIComponents\StackAndGridPage.xaml.cs">
       <DependentUpon>StackAndGridPage.xaml</DependentUpon>
@@ -52,7 +59,7 @@
     <EmbeddedResource Update="Course\1GUIComponents\FormsGUIComponentsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Course\1GUIComponents\RelativeAndAbsoluteLayout.xaml">
+    <EmbeddedResource Update="Course\1GUIComponents\AbsoluteAndRelativeLayout.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Course\1GUIComponents\StackAndGridPage.xaml">

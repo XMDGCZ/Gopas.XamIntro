@@ -14,21 +14,21 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
         {
             var section = new GroupedVM()
             {
-                ShortName = "Základní prvky GUI",
-                LongName = "Základní prvky GUI",
+                ShortName = "Basic GUI components",
+                LongName = "Basic GUI components",
             };
             section.Add(new MasterMenuItemVM { Title = "Components", TargetType = typeof(FormsGUIComponentsPage) });
-            section.Add(new MasterMenuItemVM { Title = "StackLayout a Grid", TargetType = typeof(StackAndGridPage) });
+            section.Add(new MasterMenuItemVM { Title = "StackLayout and Grid", TargetType = typeof(StackAndGridPage) });
+            section.Add(new MasterMenuItemVM { Title = "Absolute and Relative layout", TargetType = typeof(AbsoluteAndRelativeLayout) });
 
             MenuItems.Add(section);
 
             section = new GroupedVM()
             {
-                ShortName = "Navigační stránky",
-                LongName = "Navigační stránky",
-
+                ShortName = "Navigation",
+                LongName = "Navigation"
             };
-            section.Add(new MasterMenuItemVM { Title = "Jednoduchá navigace", TargetType = typeof(SimpleNavigationPage) });
+            section.Add(new MasterMenuItemVM { Title = "Simple navigation", TargetType = typeof(SimpleNavigationPage) });
             MenuItems.Add(section);
 
         }
