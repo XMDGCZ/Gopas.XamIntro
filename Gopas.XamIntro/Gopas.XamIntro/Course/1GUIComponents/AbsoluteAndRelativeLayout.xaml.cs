@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Gopas.XamIntro.Course._1GUIComponents
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RelativeAndAbsoluteLayout : ContentPage
+	public partial class AbsoluteAndRelativeLayout : ContentPage
 	{
-		public RelativeAndAbsoluteLayout ()
+		public AbsoluteAndRelativeLayout()
 		{
 			InitializeComponent ();
 		}

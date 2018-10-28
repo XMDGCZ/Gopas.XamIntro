@@ -1,17 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Gopas.XamIntro.Course._1GUIComponents.RelativeAndAbsoluteLayout">
+             x:Class="Gopas.XamIntro.Course._1GUIComponents.AbsoluteAndRelativeLayout"
+             xmlns:localForPage="clr-namespace:Gopas.XamIntro.Course._1GUIComponents">
     <ContentPage.Content>
         <StackLayout>
+            <Image Margin="0,0,0,15"
+                   Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.absolute-and-relative.png}" />
             <Label 
                 Text="Relative layout"
-                VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand"
                 Style="{DynamicResource TitleStyle}"/>
-            <RelativeLayout>
+            <AbsoluteLayout>
                 
-            </RelativeLayout>
+            </AbsoluteLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
