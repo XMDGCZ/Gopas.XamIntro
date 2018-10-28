@@ -11,10 +11,14 @@
 
   <ItemGroup>
     <None Remove="Images\logo-final.png" />
+    <None Remove="Images\stack-and-grid.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Images\logo-final.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\stack-and-grid.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
@@ -46,6 +50,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Course\1GUIComponents\FormsGUIComponentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\1GUIComponents\RelativeAndAbsoluteLayout.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Course\1GUIComponents\StackAndGridPage.xaml">
