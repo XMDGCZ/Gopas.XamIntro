@@ -10,12 +10,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\logo-final.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\logo-final.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="BaseMasterDetailPage\VM\MasterMenuItemVM.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Course\2Navigation\SimpleNavigationPage.xaml.cs">
+      <DependentUpon>SimpleNavigationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -38,7 +51,7 @@
     <EmbeddedResource Update="Course\2Navigation\SimpleContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Course\2Navigation\SimpleNavigation.xaml">
+    <EmbeddedResource Update="Course\2Navigation\SimpleNavigationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
