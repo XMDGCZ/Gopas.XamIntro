@@ -18,7 +18,7 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Základní prvky GUI",
             };
             section.Add(new MasterMenuItemVM { Title = "Components", TargetType = typeof(FormsGUIComponentsPage) });
-            section.Add(new MasterMenuItemVM { Title = "Layouts", TargetType = typeof(LayoutsPage) });
+            section.Add(new MasterMenuItemVM { Title = "StackLayout a Grid", TargetType = typeof(StackAndGridPage) });
 
             MenuItems.Add(section);
 
