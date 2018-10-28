@@ -19,7 +19,8 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
             };
             section.Add(new MasterMenuItemVM { Title = "Components", TargetType = typeof(FormsGUIComponentsPage) });
             section.Add(new MasterMenuItemVM { Title = "StackLayout and Grid", TargetType = typeof(StackAndGridPage) });
-            section.Add(new MasterMenuItemVM { Title = "Absolute and Relative layout", TargetType = typeof(AbsoluteAndRelativeLayout) });
+            section.Add(new MasterMenuItemVM { Title = "Absolute and Relative Layouts", TargetType = typeof(AbsoluteAndRelativeLayout) });
+            section.Add(new MasterMenuItemVM { Title = "Flex Layout", TargetType = typeof(FlexLayoutPage) });
 
             MenuItems.Add(section);
 
