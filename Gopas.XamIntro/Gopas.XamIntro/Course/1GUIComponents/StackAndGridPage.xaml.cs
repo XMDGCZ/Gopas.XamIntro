@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Gopas.XamIntro.Course._1GUIComponents
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LayoutsPage : ContentPage
+	public partial class StackAndGridPage : ContentPage
 	{
-		public LayoutsPage ()
+		public StackAndGridPage()
 		{
 			InitializeComponent ();
 		}
