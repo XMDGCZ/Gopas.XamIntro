@@ -28,7 +28,7 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Navigační stránky",
 
             };
-            section.Add(new MasterMenuItemVM { Title = "Jednoduchá navigace", TargetType = typeof(SimpleNavigation) });
+            section.Add(new MasterMenuItemVM { Title = "Jednoduchá navigace", TargetType = typeof(SimpleNavigationPage) });
             MenuItems.Add(section);
 
         }

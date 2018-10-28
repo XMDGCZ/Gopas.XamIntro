@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Gopas.XamIntro.Course.GUIComponents._2Navigation
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SimpleNavigation : ContentPage
+	public partial class SimpleNavigationPage : ContentPage
 	{
-		public SimpleNavigation ()
+		public SimpleNavigationPage ()
 		{
 			InitializeComponent ();
 		}
