@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,11 +28,18 @@ namespace Gopas.XamIntro.BaseMasterDetailPage
                 return;
             if (item.TargetType != null)
             {
-                var page = (Page)Activator.CreateInstance(item.TargetType);
-                page.Title = item.Title;
+                try
+                {             
+                    var page = (Page)Activator.CreateInstance(item.TargetType);
+                    page.Title = item.Title;
 
-                Detail = new NavigationPage(page);
-                IsPresented = false;
+                    Detail = new NavigationPage(page);
+                    IsPresented = false;
+                }
+                catch (TargetInvocationException  exception)
+                {
+                    Debug.WriteLine(exception.InnerException.ToString());
+                }
             }
             else
             {

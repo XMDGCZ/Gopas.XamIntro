@@ -3,12 +3,76 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gopas.XamIntro.Course._1GUIComponents.FormsGUIComponentsPage"
              xmlns:local="clr-namespace:Gopas.XamIntro"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:localForPage="clr-namespace:Gopas.XamIntro.Course._1GUIComponents">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center">
-            <Label Text="This is simple Label"/>
-            <Image Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final.png}" />
-            
-        </StackLayout>
+        <ScrollView>
+            <StackLayout 
+                HorizontalOptions="Fill" 
+                Padding="00,30,0,30">
+                <Label 
+                    Text="This is simple Label"
+                    HorizontalOptions="Center"/>
+                <Image 
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final.png}" />
+                <BoxView 
+                    Color="Blue"  
+                    HorizontalOptions="Fill"
+                    HeightRequest="15"/>
+                <Button Text="Simple button"/>
+                <SearchBar Text="Search here"/>
+                <Slider 
+                    Maximum="10"
+                    Minimum="5" 
+                    MinimumTrackColor="Blue"
+                    MaximumTrackColor="Green"/>
+                <Stepper 
+                    Maximum="15" 
+                    Minimum="10"    
+                    Increment="1"
+                    Value="12"
+                    HorizontalOptions="Center"/>
+                <Switch 
+                    IsToggled="True"
+                    HorizontalOptions="Center"/>
+                <DatePicker 
+                    Date="{x:Static sys:DateTime.Now}">
+                    <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                    <DatePicker.MinimumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Jan 1 2000</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MinimumDate>
+                    <DatePicker.MaximumDate>
+                        <sys:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Dec 31 2050</x:String>
+                            </x:Arguments>
+                        </sys:DateTime>
+                    </DatePicker.MaximumDate>
+                </DatePicker>
+                <TimePicker></TimePicker>
+                <Label HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="And much more on  " />
+                            <Span 
+                                Text="Microsoft documentation"
+                                TextColor="Blue"
+                                TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                          Command="{Binding ClickCommand}"
+                                          CommandParameter="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/controls/" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
