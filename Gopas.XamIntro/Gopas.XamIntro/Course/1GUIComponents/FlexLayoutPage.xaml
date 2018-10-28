@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localForPage="clr-namespace:Gopas.XamIntro.Course._1GUIComponents"
+             x:Class="Gopas.XamIntro.Course._1GUIComponents.FlexLayoutPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Label 
+                    Text="Flex layout"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{DynamicResource TitleStyle}"/>
+                <Label 
+                    Text="Positions childs by available space"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{DynamicResource SubtitleStyle}"
+                    Margin="0,0,0,15"/>
+            </StackLayout>
+            <FlexLayout 
+                Grid.Row="1"
+                Direction="Row"
+                AlignItems="Center"
+                JustifyContent="SpaceAround"
+                Wrap="Wrap">
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+                <Label Text="This is Flex layout"/>
+            </FlexLayout>
+            
+            <ScrollView Grid.Row="2"
+                        Orientation="Horizontal">
+                <FlexLayout
+                    Direction="Row">
+                    <Image 
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final.png}" />
+                    <Image 
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final.png}" />
+                    <Image 
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final.png}" />
+                    <Image 
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final.png}" />
+
+                </FlexLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

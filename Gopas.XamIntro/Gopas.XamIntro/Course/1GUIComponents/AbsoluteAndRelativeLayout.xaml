@@ -15,7 +15,8 @@
                 <Label 
                     Text="Positions child elements at absolute positions."
                     HorizontalOptions="CenterAndExpand"
-                    Style="{DynamicResource SubtitleStyle}"/>
+                    Style="{DynamicResource SubtitleStyle}"
+                    Margin="0,0,0,15"/>
                 <AbsoluteLayout 
                     HorizontalOptions="FillAndExpand"
                     BackgroundColor="LightBlue"
@@ -43,7 +44,8 @@
                 <Label 
                     Text="Positions child elements by Constraints"
                     HorizontalOptions="CenterAndExpand"
-                    Style="{DynamicResource SubtitleStyle}"/>
+                    Style="{DynamicResource SubtitleStyle}"
+                    Margin="0,0,0,15"/>
                 <RelativeLayout HorizontalOptions="FillAndExpand"
                     BackgroundColor="LightBlue"
                     HeightRequest="100">
