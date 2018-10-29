@@ -3,6 +3,7 @@ using Gopas.XamIntro.Course._1GUIComponents;
 using Gopas.XamIntro.Course._2Navigation;
 using Gopas.XamIntro.Course._2Navigation.SimpleMasterDetailPageFolder;
 using Gopas.XamIntro.Course._3Connectivity;
+using Gopas.XamIntro.Course._4REST;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -38,13 +39,20 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
             section.Add(new MasterMenuItemVM { Title = "Alert", TargetType = typeof(SimpleAlertPage) });
             MenuItems.Add(section);
 
-
             section = new GroupedVM()
             {
                 ShortName = "Plugins",
                 LongName = "Plugins"
             };
             section.Add(new MasterMenuItemVM { Title = "Connectivity", TargetType = typeof(XamarinEssentialsPage) });
+            MenuItems.Add(section);
+
+            section = new GroupedVM()
+            {
+                ShortName = "Web API",
+                LongName = "Web API"
+            };
+            section.Add(new MasterMenuItemVM { Title = "REST", TargetType = typeof(RestPage) });
             MenuItems.Add(section);
         }
 
