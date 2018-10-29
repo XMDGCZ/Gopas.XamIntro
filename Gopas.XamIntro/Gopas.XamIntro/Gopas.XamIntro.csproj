@@ -41,6 +41,9 @@
     <Compile Update="Course\1GUIComponents\StackAndGridPage.xaml.cs">
       <DependentUpon>StackAndGridPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Course\2Navigation\SimpleMasterDetailPageFolder\SimpleMasterDetailPageMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Course\2Navigation\SimpleNavigationPage.xaml.cs">
       <DependentUpon>SimpleNavigationPage.xaml</DependentUpon>
     </Compile>
@@ -68,10 +71,34 @@
     <EmbeddedResource Update="Course\1GUIComponents\StackAndGridPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Course\2Navigation\SimpleContentPage.xaml">
+    <EmbeddedResource Update="Course\2Navigation\AlertPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\2Navigation\Pages\SimpleContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\2Navigation\Pages\SimpleContentPage2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\2Navigation\Pages\SimpleContentPage3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\2Navigation\SimpleCarouselPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\2Navigation\SimpleMasterDetailPageFolder\SimpleMasterDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\2Navigation\SimpleMasterDetailPageFolder\SimpleMasterDetailPageDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\2Navigation\SimpleMasterDetailPageFolder\SimpleMasterDetailPageMaster.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Course\2Navigation\SimpleNavigationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\2Navigation\SimpleTabbedPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

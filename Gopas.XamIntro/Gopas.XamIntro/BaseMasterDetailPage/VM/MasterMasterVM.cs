@@ -1,6 +1,7 @@
 ﻿using Gopas.XamIntro.BaseMasterDetailPage.Pages;
 using Gopas.XamIntro.Course._1GUIComponents;
-using Gopas.XamIntro.Course.GUIComponents._2Navigation;
+using Gopas.XamIntro.Course._2Navigation;
+using Gopas.XamIntro.Course._2Navigation.SimpleMasterDetailPageFolder;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -29,7 +30,11 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 ShortName = "Navigation",
                 LongName = "Navigation"
             };
-            section.Add(new MasterMenuItemVM { Title = "Simple navigation", TargetType = typeof(SimpleNavigationPage) });
+            section.Add(new MasterMenuItemVM { Title = "NavigationPage", TargetType = typeof(SimpleNavigationPage) });
+            section.Add(new MasterMenuItemVM { Title = "TabbedPage", TargetType = typeof(SimpleTabbedPage) });
+            section.Add(new MasterMenuItemVM { Title = "MasterDetailPage", TargetType = typeof(SimpleMasterDetailPage) });
+            section.Add(new MasterMenuItemVM { Title = "CarouselPage", TargetType = typeof(SimpleCarouselPage) });
+            section.Add(new MasterMenuItemVM { Title = "Alert", TargetType = typeof(SimpleAlertPage) });
             MenuItems.Add(section);
 
         }

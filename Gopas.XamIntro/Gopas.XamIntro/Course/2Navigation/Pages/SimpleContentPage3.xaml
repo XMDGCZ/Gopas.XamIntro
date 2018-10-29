@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Gopas.XamIntro.Course.GUIComponents._2Navigation.SimpleContentPage"
-             Title="Simple content page for navigation">
+             x:Class="Gopas.XamIntro.Course._2Navigation.Pages.SimpleContentPage3"
+             Title="Page #3">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="This content page is target of navigation"
+            <Label Text="This content page is target of navigation #3"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Navigate back" Clicked="NavigateBack"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
