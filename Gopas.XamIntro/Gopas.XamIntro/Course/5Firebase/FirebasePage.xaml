@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gopas.XamIntro.Course._5Firebase.FirebasePage">
+    <ContentPage.Content>
+        <Grid VerticalOptions="Start">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Text="Google Play Services Availability"/>
+            <Label x:Name="PlayServicesStatusLabel" Grid.Column="1" />
+            <Button Text="Check Availability" 
+                    Clicked="CheckAvailabilityClick"
+                    Grid.Row="1" 
+                    Grid.ColumnSpan="2"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

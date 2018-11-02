@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "463002642639",
+    "firebase_url": "https://asdad-f8753.firebaseio.com",
+    "project_id": "asdad-f8753",
+    "storage_bucket": "asdad-f8753.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463002642639:android:e6c11387a5749987",
+        "android_client_info": {
+          "package_name": "com.companyname.Gopas.XamIntro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463002642639-ep7njn0kcda35v1l6449di0dj6q71g5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD9vo_sxggUT99m_1Mp-CzTnBw2QFSYEg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
