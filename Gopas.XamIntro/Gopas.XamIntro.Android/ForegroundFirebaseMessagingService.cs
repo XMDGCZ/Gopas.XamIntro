@@ -11,6 +11,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Firebase.Messaging;
+using Xamarin.Forms;
 
 namespace Gopas.XamIntro.Droid
 {
@@ -26,7 +27,7 @@ namespace Gopas.XamIntro.Droid
         {
             Log.Debug(TAG, "From: " + message.From);
             Log.Debug(TAG, "Notification Message Body: " + message.GetNotification().Body);
-            //MessagingCenter.Send<object, string>(this, "Hi", message.GetNotification().Body);
+            MessagingCenter.Send<object, string>(this, "PushNotificationForegroundMessage", message.GetNotification().Body);
         }
     }
 }
