@@ -4,6 +4,7 @@ using Gopas.XamIntro.Course._2Navigation;
 using Gopas.XamIntro.Course._2Navigation.SimpleMasterDetailPageFolder;
 using Gopas.XamIntro.Course._3Connectivity;
 using Gopas.XamIntro.Course._4REST;
+using Gopas.XamIntro.Course._5Push;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -53,6 +54,15 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Web API"
             };
             section.Add(new MasterMenuItemVM { Title = "REST", TargetType = typeof(RestPage) });
+            MenuItems.Add(section);
+
+
+            section = new GroupedVM()
+            {
+                ShortName = "Push notifications",
+                LongName = "Push notifications"
+            };
+            section.Add(new MasterMenuItemVM { Title = "AppCenter", TargetType = typeof(AppCenterPage) });
             MenuItems.Add(section);
         }
 
