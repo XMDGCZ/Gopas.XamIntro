@@ -34,14 +34,14 @@ namespace Gopas.XamIntro.Droid
             int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(Android.App.Application.Context);
             if (resultCode != ConnectionResult.Success)
             {
-                if(Build.VERSION.SdkInt >= BuildVersionCodes.O)
-                {
-                    CreateNotificationChannel();
-                }
                 return GoogleApiAvailability.Instance.IsUserResolvableError(resultCode);
             }
             else
             {
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+                {
+                    CreateNotificationChannel();
+                }
                 return true;
             }
         }

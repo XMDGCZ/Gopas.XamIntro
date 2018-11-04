@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+
 namespace Gopas.XamIntro.Droid
 {
     [Activity(Label = "Gopas.XamIntro", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -22,7 +23,11 @@ namespace Gopas.XamIntro.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            FCMService fCMService = new FCMService();
+            fCMService.CheckGooglePlayServicesAvailibility();
+
             LoadApplication(new App());
+
         }
 
         /// <summary>
