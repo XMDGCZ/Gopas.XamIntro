@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gopas.XamIntro.Course._5DependencyService.ToastPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Text="Message for Toast" x:Name="ToastMessageEntry"></Entry>
+            <Button Text="Show Toast message" Clicked="ToastButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -52,6 +52,12 @@
     <Compile Update="Course\2Navigation\SimpleNavigationPage.xaml.cs">
       <DependentUpon>SimpleNavigationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Course\5DependencyService\LocalNotificationpage.xaml.cs">
+      <DependentUpon>LocalNotificationpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Course\5DependencyService\ToastPage.xaml.cs">
+      <DependentUpon>ToastPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -112,7 +118,13 @@
     <EmbeddedResource Update="Course\4REST\RestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Course\5Push\AppCenterPage.xaml">
+    <EmbeddedResource Update="Course\5DependencyService\LocalNotificationpage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\5DependencyService\ToastPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\6Push\AppCenterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
