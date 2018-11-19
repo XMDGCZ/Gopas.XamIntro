@@ -4,10 +4,12 @@ using Gopas.XamIntro.Course._2Navigation;
 using Gopas.XamIntro.Course._2Navigation.SimpleMasterDetailPageFolder;
 using Gopas.XamIntro.Course._3Connectivity;
 using Gopas.XamIntro.Course._4REST;
-using Gopas.XamIntro.Course._5Push;
+using Gopas.XamIntro.Course._5DependencyService;
+using Gopas.XamIntro.Course._6Push;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Xamarin.Forms;
 
 namespace Gopas.XamIntro.BaseMasterDetailPage.VM
 {
@@ -57,6 +59,17 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
             MenuItems.Add(section);
 
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                section = new GroupedVM()
+                {
+                    ShortName = "Dependency Service",
+                    LongName = "Dependency Service"
+                };
+                section.Add(new MasterMenuItemVM { Title = "Toast", TargetType = typeof(ToastPage) });
+                section.Add(new MasterMenuItemVM { Title = "Local notification", TargetType = typeof(LocalNotificationPage) });
+                MenuItems.Add(section);
+            }
             section = new GroupedVM()
             {
                 ShortName = "Push notifications",

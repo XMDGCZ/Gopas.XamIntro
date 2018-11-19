@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gopas.XamIntro.Course._5DependencyService.LocalNotificationPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Notification Builder"
+                Style="{DynamicResource TitleStyle}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry Placeholder="Notification title" 
+                   Text="Notification title"
+                   x:Name="NotifictionTitleEntry"/>
+            <Entry Placeholder="Notification text" 
+                   Text="Notification text"
+                   x:Name="NotifictionEntryText"/>
+            <Button Text="Show local notification"
+                    Clicked="NotificationButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

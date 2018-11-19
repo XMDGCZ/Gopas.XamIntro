@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Gopas.XamIntro.Course._5Push
+namespace Gopas.XamIntro.Course._6Push
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AppCenterPage : ContentPage
