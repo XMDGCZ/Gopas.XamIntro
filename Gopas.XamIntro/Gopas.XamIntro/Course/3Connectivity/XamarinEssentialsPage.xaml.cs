@@ -23,14 +23,14 @@ namespace Gopas.XamIntro.Course._3Connectivity
         private void CheckConnectivityClick(object sender, EventArgs e)
         {
             var networkAccess = Connectivity.NetworkAccess;
-            var profiles = Connectivity.Profiles;
+            var profiles = Connectivity.ConnectionProfiles;
             DisplayConnectivityStatus(networkAccess, profiles);
         }
 
         void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
         {
             var networkAccess = e.NetworkAccess;
-            var profiles = e.Profiles;
+            var profiles = e.ConnectionProfiles;
             DisplayConnectivityStatus(networkAccess, profiles);
         }
 
