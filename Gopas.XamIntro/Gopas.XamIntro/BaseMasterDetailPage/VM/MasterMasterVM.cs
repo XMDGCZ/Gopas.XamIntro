@@ -6,6 +6,7 @@ using Gopas.XamIntro.Course._3Connectivity;
 using Gopas.XamIntro.Course._4REST;
 using Gopas.XamIntro.Course._5DependencyService;
 using Gopas.XamIntro.Course._6Push;
+using Gopas.XamIntro.Course._7Database;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -76,6 +77,13 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Push notifications"
             };
             section.Add(new MasterMenuItemVM { Title = "AppCenter", TargetType = typeof(AppCenterPage) });
+
+            section = new GroupedVM()
+            {
+                ShortName = "Database",
+                LongName = "Database"
+            };
+            section.Add(new MasterMenuItemVM { Title = "JsonDatabase", TargetType = typeof(JsonDatabasePage) });
             MenuItems.Add(section);
         }
 

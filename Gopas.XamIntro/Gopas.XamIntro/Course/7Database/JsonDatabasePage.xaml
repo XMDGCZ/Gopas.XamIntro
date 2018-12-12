@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gopas.XamIntro.Course._7Database.JsonDatabasePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="People"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="PeopleListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Entry Placeholder="Person Name" x:Name="PersonNameLabel"/>
+            <Button Clicked="AddPersonClick" Text="AddPerson"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
