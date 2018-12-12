@@ -15,6 +15,7 @@
                     HorizontalOptions="Center"/>
                 <Image 
                     Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final.png}" />
+                <Image Source="logo_final_Android.png"/>
                 <BoxView 
                     Color="Blue"  
                     HorizontalOptions="Fill"
