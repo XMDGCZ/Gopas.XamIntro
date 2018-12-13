@@ -7,6 +7,7 @@ using Gopas.XamIntro.Course._4REST;
 using Gopas.XamIntro.Course._5DependencyService;
 using Gopas.XamIntro.Course._6Push;
 using Gopas.XamIntro.Course._7Database;
+using Gopas.XamIntro.Course._7Database.SQLite;
 using Gopas.XamIntro.Course._8MVVM.View;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -86,8 +87,8 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Database"
             };
             section.Add(new MasterMenuItemVM { Title = "JsonDatabase", TargetType = typeof(JsonDatabasePage) });
+            section.Add(new MasterMenuItemVM { Title = "SQLiteDatabase", TargetType = typeof(SQLitePage) });
             MenuItems.Add(section);
-
 
             section = new GroupedVM()
             {

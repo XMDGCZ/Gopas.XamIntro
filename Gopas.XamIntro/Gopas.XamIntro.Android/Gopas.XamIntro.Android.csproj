@@ -44,7 +44,7 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
   </PropertyGroup>
   <ItemGroup>
@@ -66,6 +66,9 @@
     </PackageReference>
     <PackageReference Include="Plugin.CurrentActivity">
       <Version>2.1.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.5.231</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.0.0</Version>
