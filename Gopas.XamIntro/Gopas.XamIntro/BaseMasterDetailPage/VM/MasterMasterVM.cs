@@ -78,6 +78,7 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Push notifications"
             };
             section.Add(new MasterMenuItemVM { Title = "AppCenter", TargetType = typeof(AppCenterPage) });
+            MenuItems.Add(section);
 
             section = new GroupedVM()
             {
@@ -85,6 +86,8 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Database"
             };
             section.Add(new MasterMenuItemVM { Title = "JsonDatabase", TargetType = typeof(JsonDatabasePage) });
+            MenuItems.Add(section);
+
 
             section = new GroupedVM()
             {
@@ -92,8 +95,6 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "MVVM"
             };
             section.Add(new MasterMenuItemVM { Title = "Binding", TargetType = typeof(PageView) });
-
-
             MenuItems.Add(section);
         }
 
