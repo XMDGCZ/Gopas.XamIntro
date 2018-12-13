@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:Gopas.XamIntro.Course._8MVVM.ViewModel"
+             x:Class="Gopas.XamIntro.Course._8MVVM.View.PageView"
+             Title="{Binding PageTitle}">
+    <ContentPage.BindingContext>
+        <viewmodel:PageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding LabelValue}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry Text="{Binding LabelValue, Mode=OneWayToSource}"/>
+            <Button Command="{Binding ClickCommand}" CommandParameter="Button1 command parameter" Text="Button1 Command"/>
+            <Button Command="{Binding ClickCommand}" CommandParameter="Button2 command parameter" Text="Button2 Command"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

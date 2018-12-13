@@ -7,6 +7,7 @@ using Gopas.XamIntro.Course._4REST;
 using Gopas.XamIntro.Course._5DependencyService;
 using Gopas.XamIntro.Course._6Push;
 using Gopas.XamIntro.Course._7Database;
+using Gopas.XamIntro.Course._8MVVM.View;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -84,6 +85,15 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Database"
             };
             section.Add(new MasterMenuItemVM { Title = "JsonDatabase", TargetType = typeof(JsonDatabasePage) });
+
+            section = new GroupedVM()
+            {
+                ShortName = "MVVM",
+                LongName = "MVVM"
+            };
+            section.Add(new MasterMenuItemVM { Title = "Binding", TargetType = typeof(PageView) });
+
+
             MenuItems.Add(section);
         }
 
