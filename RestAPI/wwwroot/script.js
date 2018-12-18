@@ -13,8 +13,11 @@ function getCount(data) {
     }
 }
 
+
 $(document).ready(function () {
+    $("#loading").show();
     getData();
+    $("#loading").hide();
 });
 
 function getData() {
