@@ -20,6 +20,14 @@ namespace RestAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            using (var client = new ItemContext())
+            {
+                //Create the database file at a path defined in SimpleDataStorage
+                client.Database.EnsureCreated();
+                //Create the database tables defined in SimpleDataStorage
+                client.Database.Migrate();
+            }
         }
 
         public IConfiguration Configuration { get; }
