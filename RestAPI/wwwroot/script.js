@@ -1,5 +1,9 @@
-﻿const uri = "api/item";
+﻿const uri = "Items" + "/";
+const uriGetItems = uri + "GetItems";
 let items = null;
+
+
+
 function getCount(data) {
     const el = $("#counter");
     let name = "item";
@@ -13,25 +17,16 @@ function getCount(data) {
     }
 }
 
-
-$(document).ready(function () {
-    $("#loading").show();
-    getData();
-    $("#loading").hide();
-});
-
-function getData() {
+function getItems() {
     $.ajax({
         type: "GET",
-        url: uri,
+        url: uriGetItems,
         cache: false,
         success: function (data) {
             const tBody = $("#titems");
-
             $(tBody).empty();
 
             getCount(data.length);
-
             $.each(data, function (key, item) {
                 const tr = $("<tr></tr>")
                     .append(
@@ -81,7 +76,7 @@ function addItem() {
             alert("Something went wrong!");
         },
         success: function (result) {
-            getData();
+            getItems();
             $("#add-name").val("");
         }
     });
@@ -92,7 +87,7 @@ function deleteItem(id) {
         url: uri + "/" + id,
         type: "DELETE",
         success: function (result) {
-            getData();
+            getItems();
         }
     });
 }
@@ -102,26 +97,26 @@ function editItem(id) {
         if (item.id === id) {
             $("#edit-name").val(item.name);
             $("#edit-id").val(item.id);
-            $("#edit-isComplete")[0].checked = item.isComplete;
         }
     });
     $("#spoiler").css({ display: "block" });
 }
 
-$(".my-form").on("submit", function () {
+
+$("#my-form").submit(function () {
     const item = {
         name: $("#edit-name").val(),
         id: $("#edit-id").val()
     };
 
     $.ajax({
-        url: uri + "/" + $("#edit-id").val(),
+        url: uri + $("#edit-id").val(),
         type: "PUT",
         accepts: "application/json",
         contentType: "application/json",
         data: JSON.stringify(item),
         success: function (result) {
-            getData();
+            getItems();
         }
     });
 
@@ -132,3 +127,14 @@ $(".my-form").on("submit", function () {
 function closeInput() {
     $("#spoiler").css({ display: "none" });
 }
+
+
+$(document).ready(function () {
+    $("#table").hide();
+    $("#loading").show();
+
+    getItems();
+
+    $("#loading").hide();
+    $("#table").show(); 
+});

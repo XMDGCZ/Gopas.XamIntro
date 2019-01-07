@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gopas.XamIntro.UWP", "Gopas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gopas.XamIntro", "Gopas.XamIntro\Gopas.XamIntro\Gopas.XamIntro.csproj", "{4E853C2E-DA2E-4169-ACD3-6320A2CD6142}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestAPI", "RestAPI\RestAPI.csproj", "{3E042780-F159-4F43-B718-B3932EC73681}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestAPI", "RestAPI\RestAPI.csproj", "{3E042780-F159-4F43-B718-B3932EC73681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModel", "SharedModel\SharedModel.csproj", "{26A01FF4-76DB-4390-BC0B-CBE23B116115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedModel", "SharedModel\SharedModel.csproj", "{26A01FF4-76DB-4390-BC0B-CBE23B116115}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

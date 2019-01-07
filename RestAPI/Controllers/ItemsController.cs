@@ -11,13 +11,13 @@ using SharedModel;
 
 namespace RestAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
-    public class ItemController : ControllerBase
+    public class ItemsController : Controller
     {
         private readonly ItemContext _context;
 
-        public ItemController(ItemContext context)
+        public ItemsController(ItemContext context)
         {
             _context = context;
 
@@ -29,14 +29,22 @@ namespace RestAPI.Controllers
                 _context.SaveChanges();
             }
         }
-        // GET: api/Item
+
+        // GET: api/Items
         [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // GET: Items/GetItems
+        [HttpGet("GetItems")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
             return await _context.Items.ToListAsync();
         }
 
-        // GET: api/Item/5
+        // GET: api/Items/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(long id)
         {
@@ -56,10 +64,10 @@ namespace RestAPI.Controllers
             _context.Items.Add(todoItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetItem", new { id = todoItem.Id }, todoItem);
+            return CreatedAtAction("PostItem", new { id = todoItem.Id }, todoItem);
         }
 
-        // PUT: api/Todo/5
+        // PUT: api/Items/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutItem(long id, Item todoItem)
         {
@@ -74,7 +82,7 @@ namespace RestAPI.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Todo/5
+        // DELETE: api/Items/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Item>> DeleteItem(long id)
         {

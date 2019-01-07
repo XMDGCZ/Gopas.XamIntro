@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace RestAPI
+namespace WebApplication1
 {
     public class Program
     {
@@ -16,14 +16,9 @@ namespace RestAPI
         {
             CreateWebHostBuilder(args).Build().Run();
         }
-        /// <summary>
-        /// Uses Kestrel as web server
-        /// </summary>
-        /// <param name="args"></param>
-        /// <returns></returns>
+
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .UseKestrel();
+                .UseStartup<Startup>();
     }
 }
