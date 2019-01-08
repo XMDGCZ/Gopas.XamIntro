@@ -7,8 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using RestAPI.Database;
 using SharedModel;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace RestAPI.Controllers
 {
     [Route("[controller]")]
@@ -23,28 +21,28 @@ namespace RestAPI.Controllers
 
             if (_context.Items.Count() == 0)
             {
-                // Create a new TodoItem if collection is empty,
+                // Create a new Item if collection is empty,
                 // which means you can't delete all TodoItems.
-                _context.Items.Add(new Item { Name = "Item1" });
+                _context.Items.Add(new Item { Name = "default Item" });
                 _context.SaveChanges();
             }
         }
 
-        // GET: api/Items
+        // GET: /Items
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Items/GetItems
+        // GET: /Items/GetItems
         [HttpGet("GetItems")]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
             return await _context.Items.ToListAsync();
         }
 
-        // GET: api/Items/5
+        // GET: /Items/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(long id)
         {
@@ -57,7 +55,7 @@ namespace RestAPI.Controllers
 
             return todoItem;
         }
-
+        // POST: /Items
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item todoItem)
         {
@@ -82,7 +80,7 @@ namespace RestAPI.Controllers
             return NoContent();
         }
 
-        // DELETE: api/Items/5
+        // DELETE: /Items/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Item>> DeleteItem(long id)
         {
