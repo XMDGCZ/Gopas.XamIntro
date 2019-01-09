@@ -84,7 +84,7 @@ function addItem() {
 
 function deleteItem(id) {
     $.ajax({
-        url: uri + "/" + id,
+        url: uri + id,
         type: "DELETE",
         success: function (result) {
             getItems();
