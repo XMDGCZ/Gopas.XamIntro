@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gopas.XamIntro.Course._1GUIComponents.StackAndGridPage"
@@ -26,7 +26,7 @@
                         HorizontalOptions="Center"
                         Margin="0,15,0,0">
                     <Label Text="Or"
-                        VerticalOptions="CenterAndExpand" 
+                        VerticalOptions="Center" 
                         HorizontalOptions="CenterAndExpand" />
                     <Label Text="horizontally"
                         VerticalOptions="CenterAndExpand" 

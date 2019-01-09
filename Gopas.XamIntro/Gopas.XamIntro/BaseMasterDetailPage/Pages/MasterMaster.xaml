@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gopas.XamIntro.BaseMasterDetailPage.Pages.MasterMaster"
@@ -10,7 +10,6 @@
               ItemsSource="{Binding MenuItems}"
               IsGroupingEnabled="true" 
               GroupDisplayBinding="{Binding LongName}" 
-              GroupShortNameBinding="{Binding ShortName}"
               >
       <ListView.Header>
         <Grid BackgroundColor="#03A9F4">
@@ -41,9 +40,9 @@
         <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="35,5,0,5">
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                             <Label Text="{Binding Title}" 
-                                   FontSize="Medium"/>
+                                   FontSize="Medium" VerticalTextAlignment="Center" LineBreakMode="TailTruncation"  Margin="35,5,0,5"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
