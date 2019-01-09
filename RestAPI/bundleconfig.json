@@ -2,12 +2,14 @@
   {
     "outputFileName": "wwwroot/css/site.min.css",
     "inputFiles": [
+      "assets/materialize/css/materialize.css",
       "assets/css/index.css"
     ]
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
+      "assets/materialize/js/materialize.css",
       "assets/js/index.js"
     ],
     "minify": {

@@ -8,8 +8,16 @@
 
 table {
     font-family: Arial, sans-serif;
-    border: 1px solid;
     border-collapse: collapse;
+}
+
+th, td {
+    border-radius: 0px;
+}
+
+.table-button-td
+{
+    text-align: center;
 }
 
 th {
@@ -18,6 +26,10 @@ th {
 }
 
 td {
-    border: 1px solid;
     padding: 5px;
+}
+
+#loading{
+    display: block;
+    margin: auto;
 }

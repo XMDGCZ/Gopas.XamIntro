@@ -11,33 +11,44 @@
   
 </head>
 <body>
-    <h1>Items CRUD</h1>
-    <h3>Add</h3>
-    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-        <input type="text" id="add-name" placeholder="New to-do">
-        <input type="submit" value="Add">
-    </form>
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12">
+                    <h1>Items CRUD</h1>
+                    <h3>Add</h3>
+                    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+                        <input type="text" id="add-name" placeholder="New to-do">
+                        <input type="submit" value="Add">
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s8">
+                    <div id="spoiler">
+                        <h3>Edit</h3>
+                        <form id="my-form">
+                            <input type="hidden" id="edit-id">
+                            <input type="text" id="edit-name">
+                            <input type="submit" value="Save">
+                            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+                        </form>
+                    </div>
 
-    <div id="spoiler">
-        <h3>Edit</h3>
-        <form id="my-form">
-            <input type="hidden" id="edit-id">
-            <input type="text" id="edit-name">
-            <input type="submit" value="Save">
-            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
-        </form>
+                    <p id="counter"></p>
+                    <img id="loading" src="images/Eclipse-loading.gif" />
+                    <table id="table" class="striped">
+                        <tr>
+                            <th width="70%">Name</th>
+                            <th width="15%" class="table-button-th"></th>
+                            <th width="15%"></th>
+                        </tr>
+                        <tbody id="titems"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <p id="counter"></p>
-    <img id="loading" src="images/Eclipse-loading.gif" />
-    <table id="table">
-        <tr>
-            <th>Name</th>
-            <th></th>
-            <th></th>
-        </tr>
-        <tbody id="titems"></tbody>
-    </table>
     <script src="~/js/site.min.js"></script>
 </body>
 
