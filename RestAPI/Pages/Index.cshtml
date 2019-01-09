@@ -4,31 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>To-do CRUD</title>
-    <style>
-        input[type='submit'], button, [aria-label] {
-            cursor: pointer;
-        }
-
-        #spoiler {
-            display: none;
-        }
-
-        table {
-            font-family: Arial, sans-serif;
-            border: 1px solid;
-            border-collapse: collapse;
-        }
-
-        th {
-            background-color: #0066CC;
-            color: white;
-        }
-
-        td {
-            border: 1px solid;
-            padding: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/site.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
@@ -53,7 +29,7 @@
     </div>
 
     <p id="counter"></p>
-    <img id="loading" src="assets/Eclipse-loading.gif" />
+    <img id="loading" src="images/Eclipse-loading.gif" />
     <table id="table">
         <tr>
             <th>Name</th>
@@ -62,7 +38,7 @@
         </tr>
         <tbody id="titems"></tbody>
     </table>
-    <script src="script.js"></script>
+    <script src="~/js/site.min.js"></script>
 </body>
 
 </html>

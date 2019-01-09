@@ -5,6 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assets\js\index.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="assets\css\index.css" />
+    <Content Include="assets\js\index.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.8.391" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0" />
@@ -14,6 +26,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SharedModel\SharedModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="NováSložka\" />
   </ItemGroup>
 
 </Project>
