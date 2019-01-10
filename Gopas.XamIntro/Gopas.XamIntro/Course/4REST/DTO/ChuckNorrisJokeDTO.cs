@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Gopas.XamIntro.Course._4REST
+namespace Gopas.XamIntro.Course._4REST.DTO
 {
     class ChuckNorrisJokeDTO
     {

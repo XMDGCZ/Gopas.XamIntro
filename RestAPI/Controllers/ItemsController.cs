@@ -23,7 +23,7 @@ namespace RestAPI.Controllers
             {
                 // Create a new Item if collection is empty,
                 // which means you can't delete all TodoItems.
-                _context.Items.Add(new Item { Name = "default Item" });
+                _context.Items.Add(new APIItem { Name = "default Item" });
                 _context.SaveChanges();
             }
         }
@@ -37,14 +37,14 @@ namespace RestAPI.Controllers
 
         // GET: /Items/GetItems
         [HttpGet("GetItems")]
-        public async Task<ActionResult<IEnumerable<Item>>> GetItems()
+        public async Task<ActionResult<IEnumerable<APIItem>>> GetItems()
         {
             return await _context.Items.ToListAsync();
         }
 
         // GET: /Items/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Item>> GetItem(long id)
+        public async Task<ActionResult<APIItem>> GetItem(long id)
         {
             var todoItem = await _context.Items.FindAsync(id);
 
@@ -57,7 +57,7 @@ namespace RestAPI.Controllers
         }
         // POST: /Items
         [HttpPost]
-        public async Task<ActionResult<Item>> PostItem(Item todoItem)
+        public async Task<ActionResult<APIItem>> PostItem(APIItem todoItem)
         {
             _context.Items.Add(todoItem);
             await _context.SaveChangesAsync();
@@ -67,7 +67,7 @@ namespace RestAPI.Controllers
 
         // PUT: /Items/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItem(long id, Item todoItem)
+        public async Task<IActionResult> PutItem(long id, APIItem todoItem)
         {
             if (id != todoItem.Id)
             {
@@ -82,7 +82,7 @@ namespace RestAPI.Controllers
 
         // DELETE: /Items/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Item>> DeleteItem(long id)
+        public async Task<ActionResult<APIItem>> DeleteItem(long id)
         {
             var todoItem = await _context.Items.FindAsync(id);
             if (todoItem == null)

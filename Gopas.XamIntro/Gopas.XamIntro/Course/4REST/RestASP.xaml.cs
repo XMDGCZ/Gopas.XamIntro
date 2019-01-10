@@ -1,5 +1,6 @@
-﻿using Gopas.XamIntro.Course._4REST.DTO;
+﻿using Gopas.XamIntro.Course._7Database.SQLite.Entity;
 using Newtonsoft.Json;
+using SharedModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,41 +13,43 @@ using Xamarin.Forms.Xaml;
 
 namespace Gopas.XamIntro.Course._4REST
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class RestPage : ContentPage
-	{
-        string apiUrl = "https://api.chucknorris.io/jokes/random?category=dev";
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class RestASP : ContentPage
+    {
+        const string apiUrl = "http://10.0.2.2:5080/Items/";
+        const string getAllItemsUrl = apiUrl + "GetItems/";
+        const string singleItemUrl = apiUrl + "/";
 
-        public RestPage ()
-		{
-			InitializeComponent ();
-		}
-
-        private async void JokeButtonClicked(object sender, EventArgs e)
+        public RestASP()
+        {
+            InitializeComponent();
+        }
+               
+        private async void getAllButtonClicked(object sender, EventArgs e)
         {
             waiting.IsRunning = true;
             if (isConnectedToInternet())
             {
                 HttpClient httpClient = new HttpClient();
-                var uri = new Uri(string.Format(apiUrl, string.Empty));
+                var uri = new Uri(string.Format(getAllItemsUrl, string.Empty));
                 var response = await httpClient.GetAsync(uri);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    var dataFromApi = JsonConvert.DeserializeObject<ChuckNorrisJokeDTO>(content);
-                    if (!string.IsNullOrEmpty(dataFromApi.value))
+                    var dataFromApi = JsonConvert.DeserializeObject<List<APIItem>>(content);
+                    if (dataFromApi?.Count != 0)
                     {
-                        await DisplayAlert("Joke", dataFromApi.value, "OK");
+                        listView.ItemsSource = dataFromApi;
                     }
                     else
                     {
-                        await DisplayAlert("Nope", "Chuck Norris makes no jokes", "OK");
+                        await DisplayAlert("Error","No data to display","Ok");
                     }
                 }
             }
             else
             {
-               await DisplayAlert("Connection lost", "Not connected to Internet", "OK");
+                await DisplayAlert("Connection lost", "Not connected to Internet", "OK");
             }
             waiting.IsRunning = false;
         }

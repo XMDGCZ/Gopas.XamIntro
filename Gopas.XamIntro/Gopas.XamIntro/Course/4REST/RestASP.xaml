@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gopas.XamIntro.Course._4REST.RestASP">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Share model in Xamarin and ASP.NET Core"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Button Text="Get all Items from API" Clicked="getAllButtonClicked"/>
+            <ActivityIndicator x:Name="waiting" Color="DodgerBlue"></ActivityIndicator>
+            <ListView x:Name="listView" Header="All items">
+                <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="ID: "></Label>
+                                    <Label Text="{Binding Id}"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" 
+                                                Grid.Row="1">
+                                    <Label Text="Name"></Label>
+                                    <Label Text="{Binding Name}"></Label>
+                                </StackLayout>
+                                </Grid>
+                            </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

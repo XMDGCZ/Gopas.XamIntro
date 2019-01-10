@@ -38,6 +38,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SharedModel\SharedModel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="BaseMasterDetailPage\VM\MasterMenuItemVM.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,6 +118,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Course\3Connectivity\XamarinEssentialsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\4REST\RestASP.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Course\4REST\RestPage.xaml">

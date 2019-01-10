@@ -6,7 +6,7 @@ namespace RestAPI.Database
 {
     public class ItemContext : DbContext
     {
-        public DbSet<Item> Items { get; set; }
+        public DbSet<APIItem> Items { get; set; }
 
         private const string dbPath = "items.db";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

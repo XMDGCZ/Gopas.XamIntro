@@ -47,12 +47,12 @@ namespace RestAPI
             }
             else
             {
-                app.UseHsts();
+               // app.UseHsts();
             }
 
             app.UseDefaultFiles();
             app.UseStaticFiles();            
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
