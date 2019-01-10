@@ -7,9 +7,11 @@ namespace RestAPI.Database
     public class ItemContext : DbContext
     {
         public DbSet<Item> Items { get; set; }
+
+        private const string dbPath = "items.db";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=items.db");
+            optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
     }
 }
