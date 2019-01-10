@@ -65,7 +65,7 @@ namespace RestAPI.Controllers
             return CreatedAtAction("PostItem", new { id = todoItem.Id }, todoItem);
         }
 
-        // PUT: api/Items/5
+        // PUT: /Items/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutItem(long id, Item todoItem)
         {
