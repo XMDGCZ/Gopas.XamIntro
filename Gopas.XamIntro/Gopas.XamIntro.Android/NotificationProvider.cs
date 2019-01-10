@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.OS;
-using Android.Runtime;
 using Android.Support.V4.App;
-using Android.Views;
-using Android.Widget;
 using Gopas.XamIntro.Course._5DependencyService;
 using Gopas.XamIntro.Droid;
-using Plugin.CurrentActivity;
 using Xamarin.Forms;
 
 /// <summary>
@@ -31,7 +20,7 @@ namespace Gopas.XamIntro.Droid
 
         public void ShowNotification(string title, string text)
         {
-            var context = CrossCurrentActivity.Current.Activity;
+            var context = Android.App.Application.Context;
             if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
             {
                 createNotificationChannel();

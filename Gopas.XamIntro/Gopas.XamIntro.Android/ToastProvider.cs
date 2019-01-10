@@ -11,7 +11,6 @@ using Android.Views;
 using Android.Widget;
 using Gopas.XamIntro.Course._5DependencyService;
 using Gopas.XamIntro.Droid;
-using Plugin.CurrentActivity;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ToastProvider))]
@@ -21,7 +20,7 @@ namespace Gopas.XamIntro.Droid
     {
         public void ShowToastMessge( string text)
         {
-            Toast toast = Toast.MakeText(CrossCurrentActivity.Current.Activity, text, ToastLength.Long);
+            Toast toast = Toast.MakeText(Android.App.Application.Context, text, ToastLength.Long);
             toast.Show();
         }
     }
