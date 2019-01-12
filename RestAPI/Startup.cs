@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using RestAPI.Database;
 using SharedModel;
+using System.Collections.Generic;
 
 namespace RestAPI
 {
@@ -30,18 +32,23 @@ namespace RestAPI
         {
             services.AddDbContext<ItemContext>();
             services.AddMvc()
-            .AddJsonOptions(options =>
-            {
-                options.SerializerSettings.Converters.Add(new DefaultJsonConverter());
-            })
-            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-           
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-         
+
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                TypeNameHandling = TypeNameHandling.Objects,
+                Converters = new List<JsonConverter>
+                {
+                    new DefaultJsonConverter()
+                }
+            };
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

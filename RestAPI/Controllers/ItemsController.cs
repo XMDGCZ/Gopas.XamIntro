@@ -19,7 +19,6 @@ namespace RestAPI.Controllers
         public ItemsController(ItemContext context)
         {
             _context = context;
-
             if (_context.Items.Count() == 0)
             {
                 // Create a new Item if collection is empty,
