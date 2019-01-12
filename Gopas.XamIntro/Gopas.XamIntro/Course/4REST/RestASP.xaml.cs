@@ -1,6 +1,7 @@
 ﻿using Gopas.XamIntro.Course._7Database.SQLite.Entity;
 using Newtonsoft.Json;
 using SharedModel;
+using SharedModel.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace Gopas.XamIntro.Course._4REST
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    var dataFromApi = JsonConvert.DeserializeObject<List<APIItem>>(content);
+                    var dataFromApi = JsonConvert.DeserializeObject<List<ASPItem>>(content);
                     if (dataFromApi?.Count != 0)
                     {
                         listView.ItemsSource = dataFromApi;

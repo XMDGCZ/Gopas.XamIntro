@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestAPI.Database;
 using SharedModel;
+using SharedModel.Entity;
 
 namespace RestAPI.Controllers
 {
@@ -23,7 +24,7 @@ namespace RestAPI.Controllers
             {
                 // Create a new Item if collection is empty,
                 // which means you can't delete all TodoItems.
-                _context.Items.Add(new APIItem { Name = "default Item" });
+                _context.Items.Add(new ASPItem { Name = "default Item" });
                 _context.SaveChanges();
             }
         }
@@ -37,14 +38,14 @@ namespace RestAPI.Controllers
 
         // GET: /Items/GetItems
         [HttpGet("GetItems")]
-        public async Task<ActionResult<IEnumerable<APIItem>>> GetItems()
+        public async Task<ActionResult<IEnumerable<ASPItem>>> GetItems()
         {
             return await _context.Items.ToListAsync();
         }
 
         // GET: /Items/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<APIItem>> GetItem(long id)
+        public async Task<ActionResult<ASPItem>> GetItem(long id)
         {
             var todoItem = await _context.Items.FindAsync(id);
 
@@ -57,7 +58,7 @@ namespace RestAPI.Controllers
         }
         // POST: /Items
         [HttpPost]
-        public async Task<ActionResult<APIItem>> PostItem(APIItem todoItem)
+        public async Task<ActionResult<ASPItem>> PostItem(ASPItem todoItem)
         {
             _context.Items.Add(todoItem);
             await _context.SaveChangesAsync();
@@ -67,7 +68,7 @@ namespace RestAPI.Controllers
 
         // PUT: /Items/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutItem(long id, APIItem todoItem)
+        public async Task<IActionResult> PutItem(long id, ASPItem todoItem)
         {
             if (id != todoItem.Id)
             {
@@ -82,19 +83,21 @@ namespace RestAPI.Controllers
 
         // DELETE: /Items/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<APIItem>> DeleteItem(long id)
+        public async Task<ActionResult<ASPItem>> DeleteItem(long id)
         {
-            var todoItem = await _context.Items.FindAsync(id);
-            if (todoItem == null)
+            var Item = await _context.Items.FindAsync(id);
+            if (Item == null)
             {
                 return NotFound();
             }
 
-            _context.Items.Remove(todoItem);
+            _context.Items.Remove(Item);
             await _context.SaveChangesAsync();
 
-            return todoItem;
+            return Item;
         }
+
+
     }
 }
 

@@ -30,7 +30,8 @@ namespace RestAPI
                     // force HTTP -> produces warning
                     options.Listen(IPAddress.Loopback, 5080); //HTTP port
                     options.Listen(IPAddress.Loopback, 5443); //HTTPS port
-                }
-            );
+                })
+            ;
+
     }
 }

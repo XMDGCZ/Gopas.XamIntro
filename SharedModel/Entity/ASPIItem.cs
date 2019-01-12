@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace SharedModel
+namespace SharedModel.Entity
 {
-    public class APIItem
+    public class ASPItem
     {
         public long Id { get; set; }
         public string Name { get; set; }
