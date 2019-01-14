@@ -12,6 +12,23 @@ namespace RestAPI.ServiceStackFolder
         public object Any(SimpleDTO request)
         {
             return new SimpleDTOResponse { Result = "Hello, " + request.MyProperty };
+
+
+        }
+
+        public object Get(GetSimpleDTO request)
+        {
+            return new List<SimpleDTO>()
+            {
+                new SimpleDTO
+                {
+                    MyProperty = "1"
+                },
+                new SimpleDTO
+                {
+                    MyProperty = "2"
+                }
+            };
         }
     }
 }

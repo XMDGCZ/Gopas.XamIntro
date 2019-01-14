@@ -1,7 +1,9 @@
 ﻿using Gopas.XamIntro.Course._7Database.SQLite.Entity;
 using Newtonsoft.Json;
+using ServiceStack;
 using SharedModel;
 using SharedModel.Entity;
+using SharedModel.ServiceStackFolderModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace Gopas.XamIntro.Course._4REST
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RestASP : ContentPage
     {
-        const string apiUrl = "http://10.0.2.2:5080/Items/";
+        const string apiUrl = "http://10.0.2.2:5080/api/ServiceStack?format=json";
         const string getAllItemsUrl = apiUrl + "GetItems/";
         const string singleItemUrl = apiUrl + "/";
 
@@ -31,6 +33,12 @@ namespace Gopas.XamIntro.Course._4REST
             waiting.IsRunning = true;
             if (isConnectedToInternet())
             {
+                var client = new JsonServiceClient(apiUrl);
+
+  
+                List<SimpleDTO> response = await client.GetAsync(new GetSimpleDTO() );
+
+                /*
                 HttpClient httpClient = new HttpClient();
                 var uri = new Uri(string.Format(getAllItemsUrl, string.Empty));
                 var response = await httpClient.GetAsync(uri);
@@ -46,7 +54,7 @@ namespace Gopas.XamIntro.Course._4REST
                     {
                         await DisplayAlert("Error","No data to display","Ok");
                     }
-                }
+                }*/
             }
             else
             {

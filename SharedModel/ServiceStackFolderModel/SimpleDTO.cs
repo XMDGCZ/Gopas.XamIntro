@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace SharedModel.ServiceStackFolderModel
 {
-    [Route("/ServiceStack")]
-    [Route("/ServiceStack/{Name}")]
     public class SimpleDTO
     {
         public string MyProperty { get; set; }
