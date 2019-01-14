@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using RestAPI.Database;
+using ServiceStack;
 using SharedModel;
 using System.Collections.Generic;
 
@@ -62,6 +63,10 @@ namespace RestAPI
             app.UseStaticFiles();            
             // app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseServiceStack(new AppHost
+            {
+                AppSettings = new NetCoreAppSettings(Configuration)
+            });
         }
     }
 }
