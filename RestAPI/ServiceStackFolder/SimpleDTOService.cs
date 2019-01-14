@@ -24,11 +24,9 @@ namespace RestAPI.ServiceStackFolder
                 _context.SaveChanges();
             }
         }
-        public object Any(SimpleDTO request)
+        public async Task<object> Any(GetSimpleDTO request)
         {
-            return new SimpleDTOResponse { Result = "Hello, " + request.MyProperty };
-
-
+            return await Get(request);
         }
 
         public async Task<List<SimpleDTO>> Get(GetSimpleDTO request)

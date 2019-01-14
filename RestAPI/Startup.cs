@@ -60,13 +60,14 @@ namespace RestAPI
             }
 
             app.UseDefaultFiles();
-            app.UseStaticFiles();            
+            app.UseStaticFiles();
             // app.UseHttpsRedirection();
-            app.UseMvc();
             app.UseServiceStack(new AppHost
             {
                 AppSettings = new NetCoreAppSettings(Configuration)
             });
+            app.UseMvc();
+
         }
     }
 }
