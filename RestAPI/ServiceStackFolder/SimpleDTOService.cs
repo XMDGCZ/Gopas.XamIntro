@@ -1,4 +1,6 @@
-﻿using ServiceStack;
+﻿using Microsoft.EntityFrameworkCore;
+using RestAPI.Database;
+using ServiceStack;
 using SharedModel.ServiceStackFolderModel;
 using System;
 using System.Collections.Generic;
@@ -9,6 +11,19 @@ namespace RestAPI.ServiceStackFolder
 {
     public class SimpleDTOService : Service
     {
+        private readonly ItemContext _context;
+
+        public SimpleDTOService(ItemContext context)
+        {
+            _context = context;
+            if (_context.SimpleDTOs.Count() == 0)
+            {
+                // Create a new Item if collection is empty,
+                // which means you can't delete all TodoItems.
+                _context.SimpleDTOs.Add(new SimpleDTO { MyProperty = "default Item" });
+                _context.SaveChanges();
+            }
+        }
         public object Any(SimpleDTO request)
         {
             return new SimpleDTOResponse { Result = "Hello, " + request.MyProperty };
@@ -16,19 +31,9 @@ namespace RestAPI.ServiceStackFolder
 
         }
 
-        public object Get(GetSimpleDTO request)
+        public async Task<List<SimpleDTO>> Get(GetSimpleDTO request)
         {
-            return new List<SimpleDTO>()
-            {
-                new SimpleDTO
-                {
-                    MyProperty = "1"
-                },
-                new SimpleDTO
-                {
-                    MyProperty = "2"
-                }
-            };
+            return await _context.SimpleDTOs.ToListAsync();
         }
     }
 }

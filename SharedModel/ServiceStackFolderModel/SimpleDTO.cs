@@ -8,6 +8,7 @@ namespace SharedModel.ServiceStackFolderModel
 {
     public class SimpleDTO
     {
+        public long Id { get; set; }
         public string MyProperty { get; set; }
     }
 }

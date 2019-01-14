@@ -19,11 +19,11 @@ namespace RestAPI.Controllers
         public ItemsController(ItemContext context)
         {
             _context = context;
-            if (_context.Items.Count() == 0)
+            if (_context.ASPItems.Count() == 0)
             {
                 // Create a new Item if collection is empty,
                 // which means you can't delete all TodoItems.
-                _context.Items.Add(new ASPItem { Name = "default Item" });
+                _context.ASPItems.Add(new ASPItem { Name = "default Item" });
                 _context.SaveChanges();
             }
         }
@@ -39,14 +39,14 @@ namespace RestAPI.Controllers
         [HttpGet("GetItems")]
         public async Task<ActionResult<IEnumerable<ASPItem>>> GetItems()
         {
-            return await _context.Items.ToListAsync();
+            return await _context.ASPItems.ToListAsync();
         }
 
         // GET: /Items/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ASPItem>> GetItem(long id)
         {
-            var todoItem = await _context.Items.FindAsync(id);
+            var todoItem = await _context.ASPItems.FindAsync(id);
 
             if (todoItem == null)
             {
@@ -59,7 +59,7 @@ namespace RestAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<ASPItem>> PostItem(ASPItem todoItem)
         {
-            _context.Items.Add(todoItem);
+            _context.ASPItems.Add(todoItem);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("PostItem", new { id = todoItem.Id }, todoItem);
@@ -84,13 +84,13 @@ namespace RestAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<ASPItem>> DeleteItem(long id)
         {
-            var Item = await _context.Items.FindAsync(id);
+            var Item = await _context.ASPItems.FindAsync(id);
             if (Item == null)
             {
                 return NotFound();
             }
 
-            _context.Items.Remove(Item);
+            _context.ASPItems.Remove(Item);
             await _context.SaveChangesAsync();
 
             return Item;
