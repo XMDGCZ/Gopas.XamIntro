@@ -1,5 +1,5 @@
 ﻿using Funq;
-using RestAPI.ServiceInterface;
+using RestAPI.APIService;
 using ServiceStack;
 using System;
 

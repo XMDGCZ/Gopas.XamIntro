@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RestAPI.ServiceInterface
+namespace RestAPI.APIService
 {
     public class SimpleDTOService : Service
     {
@@ -26,12 +26,25 @@ namespace RestAPI.ServiceInterface
         }
         public async Task<object> Any(GetSimpleDTO request)
         {
-            return await Get(request);
+            return await _context.SimpleDTOs.ToListAsync();
         }
 
         public async Task<List<SimpleDTO>> Get(GetSimpleDTO request)
         {
-            return await _context.SimpleDTOs.ToListAsync();
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                var c = await _context.SimpleDTOs
+                    .Where(j => j.Name.ToLower().Equals(request.Name.ToLower()))
+                    .Select(j => j)
+                    .ToListAsync();
+
+                return c;
+            }
+            else
+            {
+                return await _context.SimpleDTOs.ToListAsync();
+            }
+
         }
     }
 }

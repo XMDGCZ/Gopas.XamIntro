@@ -3,18 +3,22 @@ using SharedModel.Entity;
 using SharedModel.ServiceInterface;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Gopas.XamIntro.Course._4REST
 {
+    enum Formats { json, csv, xml }
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RestASP : ContentPage
     {
-        const string apiUrl = "http://10.0.2.2:5080/api/ServiceStack?format=json";
-        const string getAllItemsUrl = apiUrl + "GetItems/";
-        const string singleItemUrl = apiUrl + "/";
+        const string URL = baseURL + URLItem + defaultFormat;
+        const string baseURL = "http://10.0.2.2:5080/api/";
+        const string URLItem = "ServiceStack/?Name=default item";
+        const string format = "&format=";
+        const string defaultFormat = format + nameof(Formats.json);
 
         public RestASP()
         {
@@ -24,19 +28,23 @@ namespace Gopas.XamIntro.Course._4REST
         private async void getAllButtonClicked(object sender, EventArgs e)
         {
             waiting.IsRunning = true;
-            if (isConnectedToInternet())
+            var items = await Task.Run<List<SimpleDTO>>( async () =>
             {
-                var client = new JsonServiceClient(apiUrl);
-                List<SimpleDTO> response = await client.GetAsync(new GetSimpleDTO() );
-                if(response != null)
+                if (isConnectedToInternet())
                 {
-                    listView.ItemsSource = response;
+                    var client = new JsonServiceClient(URL);
+                    List<SimpleDTO> response = await client.GetAsync(new GetSimpleDTO());
+                    return response;
                 }
-               
-            }
-            else
+                else
+                {
+                    await DisplayAlert("Connection lost", "Not connected to Internet", "OK");
+                    return null;
+                }
+            });
+            if (!items.IsErrorResponse() && !items.IsNullOrEmpty())
             {
-                await DisplayAlert("Connection lost", "Not connected to Internet", "OK");
+                listView.ItemsSource = items;
             }
             waiting.IsRunning = false;
         }
