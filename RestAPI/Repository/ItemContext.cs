@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SharedModel;
 using SharedModel.Entity;
-using SharedModel.ServiceStackFolderModel;
 
 // https://docs.microsoft.com/cs-cz/ef/core/get-started/netcore/new-db-sqlite
 // dotnet ef migrations add InitialCreate

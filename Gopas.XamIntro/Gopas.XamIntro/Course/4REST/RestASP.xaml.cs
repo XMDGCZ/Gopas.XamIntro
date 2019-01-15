@@ -1,15 +1,8 @@
-﻿using Gopas.XamIntro.Course._7Database.SQLite.Entity;
-using Newtonsoft.Json;
-using ServiceStack;
-using SharedModel;
+﻿using ServiceStack;
 using SharedModel.Entity;
-using SharedModel.ServiceStackFolderModel;
+using SharedModel.ServiceInterface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -34,27 +27,12 @@ namespace Gopas.XamIntro.Course._4REST
             if (isConnectedToInternet())
             {
                 var client = new JsonServiceClient(apiUrl);
-
-  
                 List<SimpleDTO> response = await client.GetAsync(new GetSimpleDTO() );
-
-                /*
-                HttpClient httpClient = new HttpClient();
-                var uri = new Uri(string.Format(getAllItemsUrl, string.Empty));
-                var response = await httpClient.GetAsync(uri);
-                if (response.IsSuccessStatusCode)
+                if(response != null)
                 {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var dataFromApi = JsonConvert.DeserializeObject<List<ASPItem>>(content);
-                    if (dataFromApi?.Count != 0)
-                    {
-                        listView.ItemsSource = dataFromApi;
-                    }
-                    else
-                    {
-                        await DisplayAlert("Error","No data to display","Ok");
-                    }
-                }*/
+                    listView.ItemsSource = response;
+                }
+               
             }
             else
             {

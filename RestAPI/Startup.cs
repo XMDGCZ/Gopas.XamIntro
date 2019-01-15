@@ -18,14 +18,6 @@ namespace RestAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            using (var client = new ItemContext())
-            {
-                //Create the database file at a path defined in SimpleDataStorage
-                client.Database.EnsureCreated();
-                //Create the database tables defined in SimpleDataStorage
-                client.Database.Migrate();
-            }
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.

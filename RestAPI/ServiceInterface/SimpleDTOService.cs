@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestAPI.Repository;
 using ServiceStack;
-using SharedModel.ServiceStackFolderModel;
+using SharedModel.Entity;
+using SharedModel.ServiceInterface;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace RestAPI.ServiceInterface
             {
                 // Create a new Item if collection is empty,
                 // which means you can't delete all TodoItems.
-                _context.SimpleDTOs.Add(new SimpleDTO { MyProperty = "default Item" });
+                _context.SimpleDTOs.Add(new SimpleDTO { Name = "default Item" });
                 _context.SaveChanges();
             }
         }
