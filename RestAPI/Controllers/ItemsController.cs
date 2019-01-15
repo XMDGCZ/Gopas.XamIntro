@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestAPI.Database;
-using SharedModel;
+using RestAPI.Repository;
 using SharedModel.Entity;
 
 namespace RestAPI.Controllers

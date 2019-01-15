@@ -6,6 +6,7 @@ using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
 using Newtonsoft.Json;
 using SharedModel;
+using SharedModel.Utils.Converter;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;

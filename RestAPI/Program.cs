@@ -19,7 +19,7 @@ namespace RestAPI
             CreateWebHostBuilder(args).Build().Run();
         }
         /// <summary>
-        /// Uses Kestrel as web server
+        /// Use Kestrel as web server
         /// </summary>
         /// <param name="args"></param>
         /// <returns></returns>

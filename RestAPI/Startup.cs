@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using RestAPI.Database;
+using RestAPI.Repository;
 using ServiceStack;
-using SharedModel;
+using SharedModel.Utils.Converter;
 using System.Collections.Generic;
 
 namespace RestAPI

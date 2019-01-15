@@ -3,8 +3,11 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace SharedModel
+namespace SharedModel.Utils.Converter
 {
+    /// <summary>
+    /// Default JsonConverter which force use of NewtonsoftJson only from shared lib
+    /// </summary>
     public class DefaultJsonConverter : JsonConverter
     {
         private readonly Type[] _types;

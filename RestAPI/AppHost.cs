@@ -1,12 +1,7 @@
 ﻿using Funq;
-using RestAPI.ServiceStackFolder;
+using RestAPI.ServiceInterface;
 using ServiceStack;
-using ServiceStack.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace RestAPI
 {
@@ -19,7 +14,8 @@ namespace RestAPI
         public override void Configure(Container container)
         {
             SetConfig(new HostConfig {
-               // HandlerFactoryPath = "api",
+                // IndexOutOfRangeException on application /api 
+                // HandlerFactoryPath = "api",
             });
         }
         protected void Application_Start(object sender, EventArgs e)
@@ -28,10 +24,11 @@ namespace RestAPI
         }
         /// <summary>
         /// Bug fix index out of range exception on /api
+        /// All routes will use /api by default
         /// </summary>
         /// <param name="requestType"></param>
         /// <returns></returns>
-        public override RouteAttribute[] GetRouteAttributes(System.Type requestType)
+        public override RouteAttribute[] GetRouteAttributes(Type requestType)
         {
             var routes = base.GetRouteAttributes(requestType);
             routes.Each(x => x.Path = "/api" + x.Path);

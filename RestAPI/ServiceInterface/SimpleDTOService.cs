@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RestAPI.Database;
+using RestAPI.Repository;
 using ServiceStack;
 using SharedModel.ServiceStackFolderModel;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RestAPI.ServiceStackFolder
+namespace RestAPI.ServiceInterface
 {
     public class SimpleDTOService : Service
     {
