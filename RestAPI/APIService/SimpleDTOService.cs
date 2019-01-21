@@ -3,6 +3,7 @@ using RestAPI.Repository;
 using ServiceStack;
 using SharedModel.Entity;
 using SharedModel.ServiceInterface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,6 +30,11 @@ namespace RestAPI.APIService
             return await _context.SimpleDTOs.ToListAsync();
         }
 
+        public async Task<object> Any(PostSimpleDTO request)
+        {
+            Console.WriteLine("asd");
+            return null;
+        }
         public async Task<List<SimpleDTO>> Get(GetSimpleDTO request)
         {
             if (!string.IsNullOrEmpty(request.Name))
@@ -48,11 +54,14 @@ namespace RestAPI.APIService
 
         public async Task<SimpleDTO> Post(PostSimpleDTO request)
         {
+            if (request == null) return null;
+
             request.SimpleDTOContent.Id = 0;
+
             _context.SimpleDTOs.Add(request.SimpleDTOContent);
             await _context.SaveChangesAsync();
 
-            return null;
+            return request.SimpleDTOContent;
         }
 
     }

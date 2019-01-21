@@ -13,10 +13,13 @@ namespace RestAPI
 
         public override void Configure(Container container)
         {
-            SetConfig(new HostConfig {
-                // IndexOutOfRangeException on application /api 
-                // HandlerFactoryPath = "api",
+            SetConfig(new HostConfig {    
+            // IndexOutOfRangeException on application /api 
+            // HandlerFactoryPath = "api",
             });
+            
+            //Logs are available at  / requestlogs
+            // Plugins.Add(new RequestLogsFeature());
         }
         protected void Application_Start(object sender, EventArgs e)
         {

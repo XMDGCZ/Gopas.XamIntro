@@ -18,7 +18,7 @@ namespace Gopas.XamIntro.Course._4REST
         const string URL = baseURL + URLItem + defaultFormat;
         const string baseURL = "http://10.0.2.2:5080/api/";
         const string URLItem = "ServiceStack/";
-        const string format = "";
+        const string format = "?format=";
         const string defaultFormat = format + nameof(Formats.json);
 
         public RestASP()
@@ -63,16 +63,27 @@ namespace Gopas.XamIntro.Course._4REST
             {
                 if (isConnectedToInternet())
                 {
-                    var client = new JsonServiceClient(baseURL + URLItem);
+                    var x = baseURL + URLItem;
+                    var client = new JsonServiceClient("http://10.0.2.2:5080/api/ServiceStack/?format=json");
                     SimpleDTO simpleDTO = new SimpleDTO()
                     {
                         Id = 50,
                         Name = "new item"
                     };
-                    var response = await client.PostAsync(new PostSimpleDTO {
-                        RequestDTO = simpleDTO
-                    });
-                    return response;
+                    try
+                    {
+                        var response = await client.PostAsync(new PostSimpleDTO
+                        {
+                            SimpleDTOContent = simpleDTO
+                        });
+                        return response;
+                    }
+                    catch (WebServiceException webEx)
+                    {
+
+                        return null;
+                    }
+                    
                 }
                 else
                 {
