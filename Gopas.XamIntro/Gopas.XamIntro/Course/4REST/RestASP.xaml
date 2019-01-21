@@ -9,6 +9,7 @@
                 HorizontalOptions="CenterAndExpand" />
 
             <Button Text="Get all Items from API" Clicked="getAllButtonClicked"/>
+            <Button Text="Post API" Clicked="postButtonClicked"/>
             <ActivityIndicator x:Name="waiting" Color="DodgerBlue"></ActivityIndicator>
             <ListView x:Name="listView" Header="All items">
                 <ListView.ItemTemplate>

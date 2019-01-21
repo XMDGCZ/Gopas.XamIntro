@@ -44,7 +44,16 @@ namespace RestAPI.APIService
             {
                 return await _context.SimpleDTOs.ToListAsync();
             }
-
         }
+
+        public async Task<SimpleDTO> Post(PostSimpleDTO request)
+        {
+            request.SimpleDTOContent.Id = 0;
+            _context.SimpleDTOs.Add(request.SimpleDTOContent);
+            await _context.SaveChangesAsync();
+
+            return null;
+        }
+
     }
 }

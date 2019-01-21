@@ -6,10 +6,12 @@ using System.Text;
 
 namespace SharedModel.ServiceInterface
 {
-    [Route("/ServiceStack")]
-    [Route("/ServiceStack/{Name}")]
+    [Route("/ServiceStack", "GET")]
+    [Route("/ServiceStack/{Name}", "GET")]
     public class GetSimpleDTO : IReturn<List<SimpleDTO>>
     {
         public string Name { get; set; }
     }
+
+
 }
