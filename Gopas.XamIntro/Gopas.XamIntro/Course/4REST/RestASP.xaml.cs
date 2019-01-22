@@ -3,38 +3,40 @@ using SharedModel.Entity;
 using SharedModel.ServiceInterface;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Web;
 
 namespace Gopas.XamIntro.Course._4REST
 {
-    enum Formats { json, csv, xml }
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RestASP : ContentPage
     {
-        const string URL = baseURL + URLItem + defaultFormat;
         const string baseURL = "http://10.0.2.2:5080/api/";
-        const string URLItem = "ServiceStack/";
-        const string format = "?format=";
-        const string defaultFormat = format + nameof(Formats.json);
+        SimpleEntity selectedEntity;
 
         public RestASP()
         {
             InitializeComponent();
+           // queryString["name"] = "default item";
         }
                
         private async void getAllButtonClicked(object sender, EventArgs e)
         {
             waiting.IsRunning = true;
-            var items = await Task.Run<List<SimpleDTO>>( async () =>
+            var items = await Task.Run<List<SimpleEntity>>( async () =>
             {
                 if (isConnectedToInternet())
                 {
-                    var client = new JsonServiceClient(URL);
-                    List<SimpleDTO> response = await client.GetAsync(new GetSimpleDTO());
+                    var client = new JsonServiceClient(baseURL);
+                    List<SimpleEntity> response = await client.GetAsync(new GetSimpleEntityDTO()
+                    {
+                        Name = "default item"
+                    });
                     return response;
                 }
                 else
@@ -49,7 +51,6 @@ namespace Gopas.XamIntro.Course._4REST
             }
             waiting.IsRunning = false;
         }
-
         bool isConnectedToInternet()
         {
             var networkAccess = Connectivity.NetworkAccess;
@@ -59,20 +60,20 @@ namespace Gopas.XamIntro.Course._4REST
         private async void postButtonClicked(object sender, EventArgs e)
         {
             waiting.IsRunning = true;
-            var items = await Task.Run<SimpleDTO>(async () =>
+            var items = await Task.Run<SimpleEntity>(async () =>
             {
                 if (isConnectedToInternet())
                 {
-                    var x = baseURL + URLItem;
-                    var client = new JsonServiceClient("http://10.0.2.2:5080/api/ServiceStack/?format=json");
-                    SimpleDTO simpleDTO = new SimpleDTO()
+                    var client = new JsonServiceClient(baseURL);
+
+                    SimpleEntity simpleDTO = new SimpleEntity()
                     {
                         Id = 50,
                         Name = "new item"
                     };
                     try
                     {
-                        var response = await client.PostAsync(new PostSimpleDTO
+                        var response = await client.PostAsync(new PostSimpleEntityDTO
                         {
                             SimpleDTOContent = simpleDTO
                         });
@@ -93,6 +94,74 @@ namespace Gopas.XamIntro.Course._4REST
             });
 
             waiting.IsRunning = false;
+        }
+
+        private async void AddOrUpdateClicked(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(nameEntry.Text)) return;
+
+            waiting.IsRunning = true;
+            var items = await Task.Run<SimpleEntity>(async () =>
+            {
+                if (isConnectedToInternet())
+                {
+                    var client = new JsonServiceClient(baseURL);
+                    SimpleEntity simpleDTO = new SimpleEntity();
+
+                    if (selectedEntity != null)
+                    {
+                        simpleDTO.Id = 2;
+                        simpleDTO.Name = "asdasd";
+
+                        try
+                        {
+                            var response = await client.PutAsync(new PostSimpleEntityDTO
+                            {
+                                SimpleDTOContent = simpleDTO
+                            });
+                            return response;
+                        }
+                        catch (WebServiceException webEx)
+                        {
+
+                            return null;
+                        }
+                    }
+                    else
+                    {
+
+                        simpleDTO.Id = 0;
+                        simpleDTO.Name = nameEntry.Text;
+
+                        try
+                        {
+                            var response = await client.PostAsync(new PostSimpleEntityDTO
+                            {
+                                SimpleDTOContent = simpleDTO
+                            });
+                            return response;
+                        }
+                        catch (WebServiceException webEx)
+                        {
+
+                            return null;
+                        }
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Connection lost", "Not connected to Internet", "OK");
+                    return null;
+                }
+            });
+
+            waiting.IsRunning = false;
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            selectedEntity = (SimpleEntity) ((ListView)sender).SelectedItem;
+            nameEntry.Text = selectedEntity.Name;
         }
     }
 }

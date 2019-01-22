@@ -9,7 +9,7 @@ namespace RestAPI.Repository
     public class ItemContext : DbContext
     {
         public DbSet<ASPItem> ASPItems { get; set; }
-        public DbSet<SimpleDTO> SimpleDTOs { get; set; }
+        public DbSet<SimpleEntity> SimpleDTOs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -21,21 +21,15 @@ namespace RestAPI.APIService
             {
                 // Create a new Item if collection is empty,
                 // which means you can't delete all TodoItems.
-                _context.SimpleDTOs.Add(new SimpleDTO { Name = "default Item" });
+                _context.SimpleDTOs.Add(new SimpleEntity { Name = "default Item" });
                 _context.SaveChanges();
             }
         }
-        public async Task<object> Any(GetSimpleDTO request)
+        public async Task<object> Any(GetSimpleEntityDTO request)
         {
             return await _context.SimpleDTOs.ToListAsync();
         }
-
-        public async Task<object> Any(PostSimpleDTO request)
-        {
-            Console.WriteLine("asd");
-            return null;
-        }
-        public async Task<List<SimpleDTO>> Get(GetSimpleDTO request)
+        public async Task<List<SimpleEntity>> Get(GetSimpleEntityDTO request)
         {
             if (!string.IsNullOrEmpty(request.Name))
             {
@@ -52,13 +46,23 @@ namespace RestAPI.APIService
             }
         }
 
-        public async Task<SimpleDTO> Post(PostSimpleDTO request)
+        public async Task<SimpleEntity> Post(PostSimpleEntityDTO request)
         {
             if (request == null) return null;
 
             request.SimpleDTOContent.Id = 0;
 
             _context.SimpleDTOs.Add(request.SimpleDTOContent);
+            await _context.SaveChangesAsync();
+
+            return request.SimpleDTOContent;
+        }
+
+        public async Task<SimpleEntity> Put(PostSimpleEntityDTO request)
+        {
+            if (request == null) return null;
+
+            _context.SimpleDTOs.Update(request.SimpleDTOContent);
             await _context.SaveChangesAsync();
 
             return request.SimpleDTOContent;

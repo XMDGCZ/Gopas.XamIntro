@@ -8,10 +8,15 @@ namespace SharedModel.ServiceInterface
 {
     [Route("/ServiceStack", "GET")]
     [Route("/ServiceStack/{Name}", "GET")]
-    public class GetSimpleDTO : IReturn<List<SimpleDTO>>
+    public class GetSimpleEntityDTO : IReturn<List<SimpleEntity>>
     {
         public string Name { get; set; }
     }
 
+    [Route("/ServiceStack", "POST PUT")]
+    public class PostSimpleEntityDTO : IReturn<SimpleEntity>
+    {
+        public SimpleEntity SimpleDTOContent { get; set; }
+    }
 
 }

@@ -10,8 +10,10 @@
 
             <Button Text="Get all Items from API" Clicked="getAllButtonClicked"/>
             <Button Text="Post API" Clicked="postButtonClicked"/>
+            <Entry x:Name="nameEntry" Placeholder="Name"/>
+            <Button Text="Add or update" Clicked="AddOrUpdateClicked"/>
             <ActivityIndicator x:Name="waiting" Color="DodgerBlue"></ActivityIndicator>
-            <ListView x:Name="listView" Header="All items">
+            <ListView x:Name="listView" Header="All items" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
