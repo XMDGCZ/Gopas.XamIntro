@@ -19,4 +19,9 @@ namespace SharedModel.ServiceInterface
         public SimpleEntity SimpleDTOContent { get; set; }
     }
 
+    [Route("/ServiceStack/{id}", "DELETE")]
+    public class DeleteSimpleEntityDTO : IReturn<string>
+    {
+        public long ID { get; set; }
+    }
 }

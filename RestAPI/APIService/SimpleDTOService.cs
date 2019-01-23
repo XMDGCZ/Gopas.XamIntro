@@ -68,5 +68,15 @@ namespace RestAPI.APIService
             return request.SimpleDTOContent;
         }
 
+        public async Task<string> Delete(DeleteSimpleEntityDTO request)
+        {
+            if (request == null) return null;
+
+            _context.SimpleDTOs.Remove(_context.SimpleDTOs.Where(SimpleDTO => SimpleDTO.Id == request.ID).First());
+            await _context.SaveChangesAsync();
+
+            return "ok";
+        }
+
     }
 }

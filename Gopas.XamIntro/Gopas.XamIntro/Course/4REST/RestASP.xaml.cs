@@ -33,6 +33,30 @@ namespace Gopas.XamIntro.Course._4REST
                 if (isConnectedToInternet())
                 {
                     var client = new JsonServiceClient(baseURL);
+                    List<SimpleEntity> response = await client.GetAsync(new GetSimpleEntityDTO());
+                    return response;
+                }
+                else
+                {
+                    await DisplayAlert("Connection lost", "Not connected to Internet", "OK");
+                    return null;
+                }
+            });
+            if (!items.IsErrorResponse() && !items.IsNullOrEmpty())
+            {
+                listView.ItemsSource = items;
+            }
+            waiting.IsRunning = false;
+        }
+
+        private async void getByNameButtonClicked(object sender, EventArgs e)
+        {
+            waiting.IsRunning = true;
+            var items = await Task.Run<List<SimpleEntity>>(async () =>
+            {
+                if (isConnectedToInternet())
+                {
+                    var client = new JsonServiceClient(baseURL);
                     List<SimpleEntity> response = await client.GetAsync(new GetSimpleEntityDTO()
                     {
                         Name = "default item"
@@ -96,7 +120,7 @@ namespace Gopas.XamIntro.Course._4REST
             waiting.IsRunning = false;
         }
 
-        private async void AddOrUpdateClicked(object sender, EventArgs e)
+        private async void AddOrUpdateButtonClicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(nameEntry.Text)) return;
 
@@ -155,6 +179,34 @@ namespace Gopas.XamIntro.Course._4REST
                 }
             });
 
+            waiting.IsRunning = false;
+        }
+
+        private async void deleteButtonClicked(object sender, EventArgs e)
+        {
+            if (selectedEntity == null) return;
+            waiting.IsRunning = true;
+            var items = await Task.Run<string>(async () =>
+            {
+                if (isConnectedToInternet())
+                {
+                    var client = new JsonServiceClient(baseURL);
+                    var response = await client.DeleteAsync(new DeleteSimpleEntityDTO
+                    {
+                        ID = selectedEntity.Id
+                    });
+                    return response;
+                }
+                else
+                {
+                    await DisplayAlert("Connection lost", "Not connected to Internet", "OK");
+                    return null;
+                }
+            });
+            if (!items.IsErrorResponse() && !items.IsNullOrEmpty())
+            {
+                listView.ItemsSource = items;
+            }
             waiting.IsRunning = false;
         }
 
