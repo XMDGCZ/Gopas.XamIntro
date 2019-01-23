@@ -14,14 +14,16 @@ namespace SharedModel.ServiceInterface
     }
 
     [Route("/ServiceStack", "POST PUT")]
-    public class PostSimpleEntityDTO : IReturn<SimpleEntity>
+    public class CreateOrUpdateSimpleEntityDTO : IReturn<SimpleEntity>
     {
-        public SimpleEntity SimpleDTOContent { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; }
+
     }
 
     [Route("/ServiceStack/{id}", "DELETE")]
     public class DeleteSimpleEntityDTO : IReturn<string>
     {
-        public long ID { get; set; }
+        public long Id { get; set; }
     }
 }

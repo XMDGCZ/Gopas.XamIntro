@@ -20,11 +20,11 @@
                 
                 <Button 
                     Text="Get all" 
-                    Clicked="getAllButtonClicked"/>
+                    Clicked="GetAllButtonClicked"/>
                 <Button
                         Grid.Column="1" 
                         Text="Get by Name" 
-                        Clicked="getByNameButtonClicked"/>
+                        Clicked="GetByNameButtonClicked"/>
                 <Entry 
                     Grid.Row="1" 
                     Grid.ColumnSpan="2" 
@@ -38,7 +38,7 @@
                     Grid.Row="2"
                     Grid.Column="1"
                     Text="Delete"
-                    Clicked="deleteButtonClicked"/>
+                    Clicked="DeleteButtonClicked"/>
             </Grid>
             <ActivityIndicator 
                 x:Name="waiting" 

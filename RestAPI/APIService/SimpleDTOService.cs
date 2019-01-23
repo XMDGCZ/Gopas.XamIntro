@@ -20,7 +20,7 @@ namespace RestAPI.APIService
             if (_context.SimpleDTOs.Count() == 0)
             {
                 // Create a new Item if collection is empty,
-                // which means you can't delete all TodoItems.
+                // which means you can't delete all items.
                 _context.SimpleDTOs.Add(new SimpleEntity { Name = "default Item" });
                 _context.SaveChanges();
             }
@@ -29,53 +29,67 @@ namespace RestAPI.APIService
         {
             return await _context.SimpleDTOs.ToListAsync();
         }
+
         public async Task<List<SimpleEntity>> Get(GetSimpleEntityDTO request)
         {
             if (!string.IsNullOrEmpty(request.Name))
             {
-                var c = await _context.SimpleDTOs
+                var foundSimpleDTO = await _context.SimpleDTOs
                     .Where(j => j.Name.ToLower().Equals(request.Name.ToLower()))
                     .Select(j => j)
                     .ToListAsync();
 
-                return c;
+                return foundSimpleDTO;
             }
             else
             {
-                return await _context.SimpleDTOs.ToListAsync();
+                return _context.SimpleDTOs.ToList();
             }
         }
 
-        public async Task<SimpleEntity> Post(PostSimpleEntityDTO request)
+        public async Task<SimpleEntity> Post(CreateOrUpdateSimpleEntityDTO request)
         {
-            if (request == null) return null;
+            if (request == null) throw HttpError.MethodNotAllowed("Request parameters are empty");
 
-            request.SimpleDTOContent.Id = 0;
+            var simpleEntity = new SimpleEntity()
+            {
+                Id = 0,
+                Name = request.Name
+            };
 
-            _context.SimpleDTOs.Add(request.SimpleDTOContent);
+            _context.SimpleDTOs.Add(simpleEntity);
             await _context.SaveChangesAsync();
 
-            return request.SimpleDTOContent;
+            return simpleEntity;
         }
 
-        public async Task<SimpleEntity> Put(PostSimpleEntityDTO request)
+        public async Task<SimpleEntity> Put(CreateOrUpdateSimpleEntityDTO request)
         {
-            if (request == null) return null;
+            if (request == null) throw HttpError.MethodNotAllowed("Request parameters are empty");
 
-            _context.SimpleDTOs.Update(request.SimpleDTOContent);
+            var entity = _context.SimpleDTOs.Where(SimpleDTO => SimpleDTO.Id == request.Id).First();
+           
+            entity.Name = request.Name;
+
             await _context.SaveChangesAsync();
 
-            return request.SimpleDTOContent;
+            return entity;
         }
 
         public async Task<string> Delete(DeleteSimpleEntityDTO request)
         {
-            if (request == null) return null;
-
-            _context.SimpleDTOs.Remove(_context.SimpleDTOs.Where(SimpleDTO => SimpleDTO.Id == request.ID).First());
-            await _context.SaveChangesAsync();
-
-            return "ok";
+            if (request == null) throw HttpError.MethodNotAllowed("Request parameters are empty");
+            var entity = _context.SimpleDTOs.Where(SimpleDTO => SimpleDTO.Id == request.Id).First();
+            if(entity != null) 
+            {
+                _context.SimpleDTOs.Remove(entity);
+                await _context.SaveChangesAsync();
+                return "ok";
+            }
+            else
+            {
+                return "Entity not found";
+            }
         }
 
     }
