@@ -7,20 +7,50 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using Gopas.XamIntro.Course._4REST.ServiceStack;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Gopas.XamIntro.Course._4REST
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RestASP : ContentPage
+    public partial class RestASP : ContentPage, INotifyPropertyChanged
     {
-        public ObservableCollection<SimpleEntity> Entities { get; set; }
-        SimpleEntity selectedEntity;
+        public event PropertyChangedEventHandler PropertyChanged;
+        ObservableCollection<SimpleDTOVM> _entities = new ObservableCollection<SimpleDTOVM>();
+        public ObservableCollection<SimpleDTOVM> Entities
+        {
+            get
+            {
+                return _entities;
+            }
+            set
+            {
+                _entities = value;
+                OnPropertyChanged();
+            }
+        }
+        SimpleDTOVM _selectedEntity;
+        public SimpleDTOVM SelectedEntity
+        {
+            get
+            {
+                return _selectedEntity;
+            }
+            set
+            {
+                _selectedEntity = value;   
+            }
+        }
         SimpleEntityClient client = new SimpleEntityClient();
 
 
         public RestASP()
         {
+            this.BindingContext = this;
+            
             InitializeComponent();
+            
         }
                
         private async void GetAllButtonClicked(object sender, EventArgs e)
@@ -52,8 +82,19 @@ namespace Gopas.XamIntro.Course._4REST
         {
             if (simpleEntities.Count > 0)
             {
-                Entities = new ObservableCollection<SimpleEntity>(simpleEntities);
-                listView.ItemsSource = Entities;
+                Entities.Clear();
+                var list = new ObservableCollection<SimpleDTOVM>();
+               // Entities.RaiseListChangedEvents = true;
+                Entities = list;
+                foreach(SimpleEntity simpleEntity in simpleEntities)
+                {
+                    list.Add(new SimpleDTOVM
+                    {
+                        Id = simpleEntity.Id,
+                        Name = simpleEntity.Name
+                    });
+                }
+        
             }
             else
             {
@@ -70,11 +111,14 @@ namespace Gopas.XamIntro.Course._4REST
 
             long id;
             string name;
+            bool isUpdated = false;
 
-            if (selectedEntity != null)
+            if (SelectedEntity != null)
             {
-                id = selectedEntity.Id;
+                id = SelectedEntity.Id;
                 name = nameEntry.Text;
+                SelectedEntity.Name = name;
+                isUpdated = true;
             }
             else
             {
@@ -83,30 +127,39 @@ namespace Gopas.XamIntro.Course._4REST
             }
 
             var simpleDTO = await client.CreateOrUpdate(id, name);
+
             if(simpleDTO == null)
             {
                 await DisplayAlert("Communication error", "Communication error", "OK");
             }
 
+            if (!isUpdated)
+            {
+                Entities.Add(new SimpleDTOVM
+                {
+                    Id = simpleDTO.Id,
+                    Name = simpleDTO.Name
+                });
+            }
             waiting.IsRunning = false;
         }
 
         private async void DeleteButtonClicked(object sender, EventArgs e)
         {
-            if (selectedEntity == null) return;
+            if (SelectedEntity == null) return;
 
             waiting.IsRunning = true;
 
             if (!await CheckConnection()) return;
 
-            client.Delete(selectedEntity.Id);
+            client.Delete(SelectedEntity.Id);
+            Entities.Remove(SelectedEntity);
             waiting.IsRunning = false;
         }
-
+        
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            selectedEntity = (SimpleEntity) ((ListView)sender).SelectedItem;
-            nameEntry.Text = selectedEntity.Name;
+            nameEntry.Text = SelectedEntity.Name;
         }
 
         private async Task<bool> CheckConnection()
@@ -119,6 +172,15 @@ namespace Gopas.XamIntro.Course._4REST
             else
             {
                 return true;
+            }
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            var eventHandler = this.PropertyChanged;
+            if (eventHandler != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }
