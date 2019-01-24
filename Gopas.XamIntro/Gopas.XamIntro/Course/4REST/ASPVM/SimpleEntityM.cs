@@ -1,16 +1,20 @@
-﻿using SharedModel.Entity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 
-namespace Gopas.XamIntro.Course._4REST
+namespace Gopas.XamIntro.Course._4REST.ASPVM
 {
-    public class SimpleDTOVM : INotifyPropertyChanged
+    public class SimpleEntityM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private long _Id;
+        private string _name;
+
+
+        public SimpleEntityM(long id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
 
         public long Id
         {
@@ -21,7 +25,7 @@ namespace Gopas.XamIntro.Course._4REST
             }
         }
 
-        private string _name;
+       
 
         public string Name
         {

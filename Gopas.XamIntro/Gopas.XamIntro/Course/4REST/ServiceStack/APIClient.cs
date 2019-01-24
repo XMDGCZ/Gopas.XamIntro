@@ -49,6 +49,7 @@ namespace Gopas.XamIntro.Course._4REST.ServiceStack
             catch (WebServiceException webEx)
             {
                 Debug.WriteLine(webEx.ToString());
+                string c = webEx.Message;
                 return null;
             }
         }

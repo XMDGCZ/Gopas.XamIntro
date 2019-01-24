@@ -78,9 +78,12 @@ namespace RestAPI.APIService
 
         public async Task<string> Delete(DeleteSimpleEntityDTO request)
         {
-            if (request == null) throw HttpError.MethodNotAllowed("Request parameters are empty");
-            var entity = _context.SimpleDTOs.Where(SimpleDTO => SimpleDTO.Id == request.Id).First();
-            if(entity != null) 
+            if (request == null)
+            {
+                throw new ArgumentNullException("Request parameters are empty");
+            }
+            var entity = await  _context.SimpleDTOs.Where(SimpleDTO => SimpleDTO.Id == request.Id).FirstOrDefaultAsync();
+            if (entity != null)
             {
                 _context.SimpleDTOs.Remove(entity);
                 await _context.SaveChangesAsync();
@@ -90,6 +93,7 @@ namespace RestAPI.APIService
             {
                 return "Entity not found";
             }
+            
         }
 
     }

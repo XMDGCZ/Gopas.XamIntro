@@ -2,14 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using Gopas.XamIntro.Course._4REST.ServiceStack;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
+using Gopas.XamIntro.Course._4REST.ASPVM;
+using System.Diagnostics;
 
 namespace Gopas.XamIntro.Course._4REST
 {
@@ -17,8 +17,8 @@ namespace Gopas.XamIntro.Course._4REST
     public partial class RestASP : ContentPage, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        ObservableCollection<SimpleDTOVM> _entities = new ObservableCollection<SimpleDTOVM>();
-        public ObservableCollection<SimpleDTOVM> Entities
+        ObservableCollection<SimpleEntityM> _entities = new ObservableCollection<SimpleEntityM>();
+        public ObservableCollection<SimpleEntityM> Entities
         {
             get
             {
@@ -30,8 +30,8 @@ namespace Gopas.XamIntro.Course._4REST
                 OnPropertyChanged();
             }
         }
-        SimpleDTOVM _selectedEntity;
-        public SimpleDTOVM SelectedEntity
+        SimpleEntityM _selectedEntity;
+        public SimpleEntityM SelectedEntity
         {
             get
             {
@@ -42,7 +42,7 @@ namespace Gopas.XamIntro.Course._4REST
                 _selectedEntity = value;   
             }
         }
-        SimpleEntityClient client = new SimpleEntityClient();
+        SimpleEntityDTOClient client = new SimpleEntityDTOClient();
 
 
         public RestASP()
@@ -83,18 +83,13 @@ namespace Gopas.XamIntro.Course._4REST
             if (simpleEntities.Count > 0)
             {
                 Entities.Clear();
-                var list = new ObservableCollection<SimpleDTOVM>();
+                var list = new ObservableCollection<SimpleEntityM>();
                // Entities.RaiseListChangedEvents = true;
                 Entities = list;
                 foreach(SimpleEntity simpleEntity in simpleEntities)
                 {
-                    list.Add(new SimpleDTOVM
-                    {
-                        Id = simpleEntity.Id,
-                        Name = simpleEntity.Name
-                    });
+                    list.Add(new SimpleEntityM(simpleEntity.Id, simpleEntity.Name));
                 }
-        
             }
             else
             {
@@ -126,20 +121,16 @@ namespace Gopas.XamIntro.Course._4REST
                 name = nameEntry.Text;
             }
 
-            var simpleDTO = await client.CreateOrUpdate(id, name);
+            var simpleEntityDTO = await client.CreateOrUpdate(id, name);
 
-            if(simpleDTO == null)
+            if(simpleEntityDTO == null)
             {
                 await DisplayAlert("Communication error", "Communication error", "OK");
             }
 
             if (!isUpdated)
             {
-                Entities.Add(new SimpleDTOVM
-                {
-                    Id = simpleDTO.Id,
-                    Name = simpleDTO.Name
-                });
+                Entities.Add(new SimpleEntityM(simpleEntityDTO.Id, simpleEntityDTO.Name));
             }
             waiting.IsRunning = false;
         }
@@ -152,8 +143,15 @@ namespace Gopas.XamIntro.Course._4REST
 
             if (!await CheckConnection()) return;
 
-            client.Delete(SelectedEntity.Id);
-            Entities.Remove(SelectedEntity);
+            var response = await client.Delete(SelectedEntity.Id);
+            if (response.Equals("ok"))
+            {
+                Entities.Remove(SelectedEntity);
+            }
+            else
+            {
+                Debug.WriteLine(response);
+            }
             waiting.IsRunning = false;
         }
         
@@ -175,7 +173,7 @@ namespace Gopas.XamIntro.Course._4REST
             }
         }
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var eventHandler = this.PropertyChanged;
             if (eventHandler != null)

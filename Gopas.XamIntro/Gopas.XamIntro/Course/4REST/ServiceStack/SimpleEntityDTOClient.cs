@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gopas.XamIntro.Course._4REST.ServiceStack
 {
-    class SimpleEntityClient
+    class SimpleEntityDTOClient
     {
         const string baseURL = "http://10.0.2.2:5080/api/";
         private readonly APIClient client = new APIClient(baseURL);
@@ -51,13 +51,14 @@ namespace Gopas.XamIntro.Course._4REST.ServiceStack
             }
         }
 
-        public async void Delete(long id)
+        public async Task<string> Delete(long id)
         {
             DeleteSimpleEntityDTO deleteSimpleEntityDTO = new DeleteSimpleEntityDTO
             {
                 Id = id
             };
-            await client.Delete(deleteSimpleEntityDTO);
+             return await client.Delete(deleteSimpleEntityDTO);
+
         }
     }
 }
