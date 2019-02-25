@@ -14,9 +14,8 @@ using System.Diagnostics;
 namespace Gopas.XamIntro.Course._4REST
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RestASP : ContentPage, INotifyPropertyChanged
+    public partial class RestASP : ContentPage
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         ObservableCollection<SimpleEntityM> _entities = new ObservableCollection<SimpleEntityM>();
         public ObservableCollection<SimpleEntityM> Entities
         {
@@ -39,7 +38,7 @@ namespace Gopas.XamIntro.Course._4REST
             }
             set
             {
-                _selectedEntity = value;   
+                _selectedEntity = value;
             }
         }
         SimpleEntityDTOClient client = new SimpleEntityDTOClient();
@@ -48,14 +47,15 @@ namespace Gopas.XamIntro.Course._4REST
         public RestASP()
         {
             this.BindingContext = this;
-            
+
             InitializeComponent();
-            
+
         }
-               
+
         private async void GetAllButtonClicked(object sender, EventArgs e)
         {
             waiting.IsRunning = true;
+            SelectedEntity = null;
             if (!await CheckConnection()) return;
 
             var response = await client.Get();
@@ -66,6 +66,7 @@ namespace Gopas.XamIntro.Course._4REST
 
         private async void GetByNameButtonClicked(object sender, EventArgs e)
         {
+            SelectedEntity = null;
             if (string.IsNullOrEmpty(nameEntry.Text)) return;
             waiting.IsRunning = true;
 
@@ -77,16 +78,15 @@ namespace Gopas.XamIntro.Course._4REST
             waiting.IsRunning = false;
         }
 
- 
+
         private async void DisplaySimpleEntities(List<SimpleEntity> simpleEntities)
         {
             if (simpleEntities.Count > 0)
             {
                 Entities.Clear();
                 var list = new ObservableCollection<SimpleEntityM>();
-               // Entities.RaiseListChangedEvents = true;
                 Entities = list;
-                foreach(SimpleEntity simpleEntity in simpleEntities)
+                foreach (SimpleEntity simpleEntity in simpleEntities)
                 {
                     list.Add(new SimpleEntityM(simpleEntity.Id, simpleEntity.Name));
                 }
@@ -123,7 +123,7 @@ namespace Gopas.XamIntro.Course._4REST
 
             var simpleEntityDTO = await client.CreateOrUpdate(id, name);
 
-            if(simpleEntityDTO == null)
+            if (simpleEntityDTO == null)
             {
                 await DisplayAlert("Communication error", "Communication error", "OK");
             }
@@ -132,6 +132,8 @@ namespace Gopas.XamIntro.Course._4REST
             {
                 Entities.Add(new SimpleEntityM(simpleEntityDTO.Id, simpleEntityDTO.Name));
             }
+
+            SelectedEntity = null;
             waiting.IsRunning = false;
         }
 
@@ -152,9 +154,10 @@ namespace Gopas.XamIntro.Course._4REST
             {
                 Debug.WriteLine(response);
             }
+            SelectedEntity = null;
             waiting.IsRunning = false;
         }
-        
+
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             nameEntry.Text = SelectedEntity.Name;
@@ -170,15 +173,6 @@ namespace Gopas.XamIntro.Course._4REST
             else
             {
                 return true;
-            }
-        }
-
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var eventHandler = this.PropertyChanged;
-            if (eventHandler != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
     }

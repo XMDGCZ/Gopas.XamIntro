@@ -15,77 +15,88 @@
     <div class="container">
         <div class="row">
             <div class="col s8">
-                <h1>Items CRUD</h1>
+                <h1>Pages</h1>
 
                 <ul class="collection">
                     <li class="collection-item">
-                        <b>GET: /Items/GetItems</b> - get all items from database <a class="secondary-content" href="~/Items/GetItems"><i class="material-icons">link</i></a>
-                    </li>
-                    <li class="collection-item">
-                        <b>GET: /Items/{id}</b> - get item based on ID <a class="secondary-content" href="~/Items/1"><i class="material-icons">link</i></a>
-                    </li>
-                    <li class="collection-item">
-                        <b>POST: /Items</b> - add item
-                    </li>
-                    <li class="collection-item">
-                        <b>PUT: /Items/{id}</b> - edit item
-                    </li>
-                    <li class="collection-item">
-                        <b>DELETE: /Items/{id}</b> - delete item
+                        <b>ServiceStack metadata</b> <a class="secondary-content" href="/metadata"><i class="material-icons">link</i></a>
                     </li>
                 </ul>
-
-                <h3>Item structure</h3>
-                <table class="striped">
-                    <tr>
-                        <th>Porperty</th>
-                        <th>Data type</th>
-                    </tr>
-                    <tbody>
-                        <tr>
-                            <td>ID</td>
-                            <td>long</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>String</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-        </div>
-        <div class="row">
-            <div class="col s8">
-                <h3>Interactive</h3>
-                <h4>Add</h4>
-                <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
-                    <input type="text" id="add-name" placeholder="New item">
-                    <input type="submit" value="Add">
-                </form>
-                <div id="spoiler">
-                    <h3>Edit</h3>
-                    <form id="my-form">
-                        <input type="hidden" id="edit-id">
-                        <input type="text" id="edit-name">
-                        <input type="submit" value="Save">
-                        <a onclick="closeInput()" aria-label="Close">&#10006;</a>
-                    </form>
-                </div>
-                <h4>All items</h4>
-                <p id="counter"></p>
-                <img id="loading" src="images/Eclipse-loading.gif" />
-                <table id="table" class="striped">
-                    <tr>
-                        <th width="70%">Name</th>
-                        <th width="15%" class="table-button-th"></th>
-                        <th width="15%"></th>
-                    </tr>
-                    <tbody id="titems"></tbody>
-                </table>
             </div>
         </div>
-    </div>
-    <script src="~/js/site.min.js"></script>
+                <div class="row">
+                    <div class="col s8">
+                        <h1>Items CRUD</h1>
+
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <b>GET: /Items/GetItems</b> - get all items from database <a class="secondary-content" href="~/Items/GetItems"><i class="material-icons">link</i></a>
+                            </li>
+                            <li class="collection-item">
+                                <b>GET: /Items/{id}</b> - get item based on ID <a class="secondary-content" href="~/Items/1"><i class="material-icons">link</i></a>
+                            </li>
+                            <li class="collection-item">
+                                <b>POST: /Items</b> - add item
+                            </li>
+                            <li class="collection-item">
+                                <b>PUT: /Items/{id}</b> - edit item
+                            </li>
+                            <li class="collection-item">
+                                <b>DELETE: /Items/{id}</b> - delete item
+                            </li>
+                        </ul>
+
+                        <h3>Item structure</h3>
+                        <table class="striped">
+                            <tr>
+                                <th>Porperty</th>
+                                <th>Data type</th>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>long</td>
+                                </tr>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>String</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s8">
+                        <h3>Interactive</h3>
+                        <h4>Add</h4>
+                        <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+                            <input type="text" id="add-name" placeholder="New item">
+                            <input type="submit" value="Add">
+                        </form>
+                        <div id="spoiler">
+                            <h3>Edit</h3>
+                            <form id="my-form">
+                                <input type="hidden" id="edit-id">
+                                <input type="text" id="edit-name">
+                                <input type="submit" value="Save">
+                                <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+                            </form>
+                        </div>
+                        <h4>All items</h4>
+                        <p id="counter"></p>
+                        <img id="loading" src="images/Eclipse-loading.gif" />
+                        <table id="table" class="striped">
+                            <tr>
+                                <th width="70%">Name</th>
+                                <th width="15%" class="table-button-th"></th>
+                                <th width="15%"></th>
+                            </tr>
+                            <tbody id="titems"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <script src="~/js/site.min.js"></script>
 </body>
 
 </html>
