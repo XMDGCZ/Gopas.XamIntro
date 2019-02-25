@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Gopas.XamIntro.Course._4REST.DTO;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;

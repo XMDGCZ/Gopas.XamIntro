@@ -59,6 +59,7 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "Web API"
             };
             section.Add(new MasterMenuItemVM { Title = "REST", TargetType = typeof(RestPage) });
+            section.Add(new MasterMenuItemVM { Title = "REST ASP.NET Core", TargetType = typeof(RestASP) });
             MenuItems.Add(section);
 
 

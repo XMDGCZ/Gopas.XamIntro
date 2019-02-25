@@ -4,7 +4,11 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
+using Newtonsoft.Json;
+using SharedModel;
+using SharedModel.Utils.Converter;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +19,16 @@ namespace Gopas.XamIntro
     {
         public App()
         {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                TypeNameHandling = TypeNameHandling.Objects,
+                Converters = new List<JsonConverter>
+                {
+                    new DefaultJsonConverter()
+                }
+            };
+
             InitializeComponent();
 
             MainPage = new Master();
