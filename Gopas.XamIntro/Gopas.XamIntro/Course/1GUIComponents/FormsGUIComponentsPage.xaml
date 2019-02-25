@@ -14,8 +14,8 @@
                     Text="This is simple Label"
                     HorizontalOptions="Center"/>
                 <Image 
-                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final.png}" />
-                <Image Source="logo_final_Android.png"/>
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo_final.png}" />
+                <Image Source="logo_final.png"/>
                 <BoxView 
                     Color="Blue"  
                     HorizontalOptions="Fill"

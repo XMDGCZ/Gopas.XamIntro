@@ -2,7 +2,7 @@
 using Android.OS;
 using Android.Support.V4.App;
 using Gopas.XamIntro.Course._5DependencyService;
-using Gopas.XamIntro.Droid;
+using Gopas.XamIntro.Droid.DIProviders;
 using Xamarin.Forms;
 
 /// <summary>
@@ -11,7 +11,7 @@ using Xamarin.Forms;
 /// </summary>
 
 [assembly: Dependency(typeof(NotificationProvider))]
-namespace Gopas.XamIntro.Droid
+namespace Gopas.XamIntro.Droid.DIProviders
 {
     class NotificationProvider : INotificationProvider
     {
