@@ -11,7 +11,6 @@ namespace Gopas.XamIntro.Course._8MVVM.ViewModel
     {
         public string PageTitle { get; set; } = "Title from VM";
         private string labelValue = "Default Text";
-
         public string LabelValue
         {
             get {

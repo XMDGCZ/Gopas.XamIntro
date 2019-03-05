@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Gopas.XamIntro.Course._4REST.Weather.VM"
+             x:Class="Gopas.XamIntro.Course._4REST.WeatherPage">
+    <ContentPage.BindingContext>
+        <local:WeatherPageVM></local:WeatherPageVM>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Latitude, StringFormat='Latitude: {0}' }"
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding LongLatitude, StringFormat='LongLatitude: {0}' }"
+                HorizontalOptions="CenterAndExpand" />
+
+            <Button Command="{Binding ClickCommand}" Text="Set location" IsEnabled="{Binding CanClick}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

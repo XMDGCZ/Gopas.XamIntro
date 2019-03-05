@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
-namespace Gopas.XamIntro.Course._4REST.ServiceStack
+namespace Gopas.XamIntro.Course._4REST.ASP_ServiceStack.ServiceStack
 {
     class APIClient
     {

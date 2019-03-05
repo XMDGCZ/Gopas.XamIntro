@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Gopas.XamIntro.Course._4REST.ASPVM
+namespace Gopas.XamIntro.Course._4REST.ASP_ServiceStack.ASPVM
 {
     public class SimpleEntityM : INotifyPropertyChanged
     {

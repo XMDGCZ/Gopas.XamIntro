@@ -60,6 +60,7 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
             };
             section.Add(new MasterMenuItemVM { Title = "REST", TargetType = typeof(RestPage) });
             section.Add(new MasterMenuItemVM { Title = "REST ASP.NET Core", TargetType = typeof(RestASP) });
+            section.Add(new MasterMenuItemVM { Title = "Weather", TargetType = typeof(WeatherPage) });
             MenuItems.Add(section);
 
 

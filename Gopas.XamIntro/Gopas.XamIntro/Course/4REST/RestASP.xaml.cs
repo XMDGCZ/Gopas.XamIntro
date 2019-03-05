@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
-using Gopas.XamIntro.Course._4REST.ServiceStack;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Gopas.XamIntro.Course._4REST.ASPVM;
 using System.Diagnostics;
+using Gopas.XamIntro.Course._4REST.ASP_ServiceStack.ASPVM;
+using Gopas.XamIntro.Course._4REST.ASP_ServiceStack.ServiceStack;
 
 namespace Gopas.XamIntro.Course._4REST
 {

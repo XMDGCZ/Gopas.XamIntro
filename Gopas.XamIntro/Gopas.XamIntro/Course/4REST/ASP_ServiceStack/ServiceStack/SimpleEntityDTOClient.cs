@@ -4,7 +4,7 @@ using SharedModel.ServiceInterface;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Gopas.XamIntro.Course._4REST.ServiceStack
+namespace Gopas.XamIntro.Course._4REST.ASP_ServiceStack.ServiceStack
 {
     class SimpleEntityDTOClient
     {
