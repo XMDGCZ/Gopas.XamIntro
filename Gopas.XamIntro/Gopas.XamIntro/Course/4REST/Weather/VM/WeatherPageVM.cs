@@ -23,6 +23,16 @@ namespace Gopas.XamIntro.Course._4REST.Weather.VM
             }
         }
 
+        string imgSource;
+        public string ImgSource
+        {
+            get { return imgSource; }
+            set
+            {
+                imgSource = value;
+                OnPropertyChanged("ImgSource");
+            }
+        }
         bool isLoading = false;
         public bool IsLoading
         {
@@ -86,6 +96,9 @@ namespace Gopas.XamIntro.Course._4REST.Weather.VM
             LongLatitude = location.Longitude;
             var weather = await WeatherHelper.GetCurrentConditionsAsync(Latitude, LongLatitude);
             WeatherDescription = weather.list?[0].weather?[0].description;
+            string iconURL = "http://openweathermap.org/img/w/";
+            iconURL += weather.list?[0].weather?[0].icon + ".png";
+            ImgSource = iconURL;
 
             CanClick = true;
             IsLoading = false;

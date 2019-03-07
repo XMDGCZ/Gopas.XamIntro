@@ -12,10 +12,20 @@
                 HorizontalOptions="CenterAndExpand" />
             <Label Text="{Binding LongLatitude, StringFormat='LongLatitude: {0}' }"
                 HorizontalOptions="CenterAndExpand" />
-            <Label Text="{Binding WeatherDescription, StringFormat='Current weather is {0}' }"
-                HorizontalOptions="CenterAndExpand" />
-            <Button Command="{Binding ClickCommand}" Text="Set location" IsEnabled="{Binding CanClick}"/>
-            <ActivityIndicator IsRunning="{Binding IsLoading}" Color="DodgerBlue"/>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="CenterAndExpand">
+                <Label Text="{Binding WeatherDescription, StringFormat='Current weather is {0}' }"
+                    HorizontalOptions="Center" />
+                <Image Source="{Binding ImgSource}" 
+                       Aspect="AspectFit"
+                       VerticalOptions="FillAndExpand"/>
+            </StackLayout>
+            <Button Command="{Binding ClickCommand}" 
+                    Text="Set location" 
+                    IsEnabled="{Binding CanClick}"/>
+            <ActivityIndicator IsRunning="{Binding IsLoading}" 
+                               Color="DodgerBlue"/>
+  
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
