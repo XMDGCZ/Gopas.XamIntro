@@ -6,6 +6,6 @@ namespace Gopas.XamIntro.Course._4REST.Weather.DTOs
 {
     class RainDTO
     {
-        public double? __invalid_name__3h { get; set; }
+        public double rain { get; set; }
     }
 }

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Gopas.XamIntro.Course._4REST.Weather.DTOs
 {
-    class WeatherLocationDTO
+    class WeatherListDTO
     {
         public string cod { get; set; }
         public double message { get; set; }

@@ -22,6 +22,17 @@ namespace Gopas.XamIntro.Course._4REST.Weather.VM
                 OnPropertyChanged("CanClick");
             }
         }
+
+        bool isLoading = false;
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set
+            {
+                isLoading = value;
+                OnPropertyChanged("IsLoading");
+            }
+        }
         private double _latitude;
 
         public double Latitude
@@ -43,14 +54,18 @@ namespace Gopas.XamIntro.Course._4REST.Weather.VM
             }
         }
 
-        private WeatherLocationDTO weatherDTO;
-
-        public WeatherLocationDTO WeatherDTO
+        private string weatherDescription;
+        public string WeatherDescription
         {
-            get { return weatherDTO; }
+            get {
+               
+                if (!string.IsNullOrEmpty(weatherDescription)) return weatherDescription;
+                else return "Weather not found";
+
+            }
             set {
-                weatherDTO = value;
-                OnPropertyChanged("WeatherDTO");
+                weatherDescription = value;
+                OnPropertyChanged("WeatherDescription");
             }
         }
 
@@ -63,14 +78,17 @@ namespace Gopas.XamIntro.Course._4REST.Weather.VM
 
         private async Task SetLocation()
         {
-                CanClick = false;
+            CanClick = false;
+            IsLoading = true;
 
-                var location = await LocationHelper.GetLocation();
-                Latitude = location.Latitude;
-                LongLatitude = location.Longitude;
-                WeatherDTO = await WeatherHelper.GetCurrentConditionsAsync(Latitude, LongLatitude);
-                
-                CanClick = true;
+            var location = await LocationHelper.GetLocation();
+            Latitude = location.Latitude;
+            LongLatitude = location.Longitude;
+            var weather = await WeatherHelper.GetCurrentConditionsAsync(Latitude, LongLatitude);
+            WeatherDescription = weather.list?[0].weather?[0].description;
+
+            CanClick = true;
+            IsLoading = false;
         }
 
         private void OnPropertyChanged(string propertyName)

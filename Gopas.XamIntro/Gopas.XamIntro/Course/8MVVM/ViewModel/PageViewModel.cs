@@ -10,6 +10,8 @@ namespace Gopas.XamIntro.Course._8MVVM.ViewModel
     class PageViewModel : INotifyPropertyChanged
     {
         public string PageTitle { get; set; } = "Title from VM";
+        private bool isLoading;
+
         private string labelValue = "Default Text";
         public string LabelValue
         {
