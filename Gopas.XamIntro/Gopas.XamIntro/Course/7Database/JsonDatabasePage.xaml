@@ -17,7 +17,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Entry Placeholder="Person Name" x:Name="PersonNameLabel"/>
-            <Button Clicked="AddPersonClick" Text="AddPerson"/>
+            <Button Clicked="addPersonClick" Text="AddPerson"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

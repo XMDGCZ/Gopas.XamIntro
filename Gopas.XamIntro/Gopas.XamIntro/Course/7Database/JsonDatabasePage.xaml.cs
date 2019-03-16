@@ -21,12 +21,12 @@ namespace Gopas.XamIntro.Course._7Database
         {
             InitializeComponent();
             path = Path.Combine(getDataDirectory(), fileName);
-            ShowPersons();
         }
-        
-        async void ShowPersons()
+
+
+        async Task ShowPersons()
         {
-            var jsonFromFile = await ReadFileAsync(path);
+            var jsonFromFile = await readFileAsync(path);
             if (!string.IsNullOrEmpty(jsonFromFile))
             {
                 people = JsonConvert.DeserializeObject<List<Person>>(jsonFromFile);
@@ -34,13 +34,21 @@ namespace Gopas.XamIntro.Course._7Database
             }
         }
 
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await ShowPersons();
+        }
+
         string getDataDirectory()
         {
             return FileSystem.AppDataDirectory;
         }
 
-        async Task<string> ReadFileAsync(string path)
+        async Task<string> readFileAsync(string path)
         {
+            if (!File.Exists(path)) return null ;
+
             using (var stream = File.Open(path, FileMode.Open))
             {
                 using (var reader = new StreamReader(stream))
@@ -50,7 +58,7 @@ namespace Gopas.XamIntro.Course._7Database
             }
         }
 
-        async void WriteFileAsync(string path, string content)
+        async Task writeFileAsync(string path, string content)
         {
             using (var stream = File.Open(path, FileMode.OpenOrCreate))
             {
@@ -61,7 +69,7 @@ namespace Gopas.XamIntro.Course._7Database
             }
         }
 
-        void AddPersonClick(object sender, EventArgs e)
+        async void addPersonClick(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(PersonNameLabel.Text))
             {
@@ -71,9 +79,9 @@ namespace Gopas.XamIntro.Course._7Database
                 };
                 people.Add(newPerson);
                 var peopleJson = JsonConvert.SerializeObject(people);
-                WriteFileAsync(path, peopleJson);
+                await writeFileAsync(path, peopleJson);
 
-                ShowPersons();
+                await ShowPersons();
             }
         }
     }
