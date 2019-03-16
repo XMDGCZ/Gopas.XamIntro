@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Gopas.XamIntro.Droid
 {
-    [Activity(Label = "SplashActivity", Theme = "@style/SplashTheme", MainLauncher = true, NoHistory = true)]
+    [Activity( Theme = "@style/SplashTheme", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)
