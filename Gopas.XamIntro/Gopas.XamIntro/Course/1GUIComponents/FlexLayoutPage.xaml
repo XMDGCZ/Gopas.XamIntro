@@ -4,12 +4,7 @@
              xmlns:localForPage="clr-namespace:Gopas.XamIntro.Course._1GUIComponents"
              x:Class="Gopas.XamIntro.Course._1GUIComponents.FlexLayoutPage">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
+        <StackLayout>
             <StackLayout>
                 <Label 
                     Text="Flex layout"
@@ -22,7 +17,6 @@
                     Margin="0,0,0,15"/>
             </StackLayout>
             <FlexLayout 
-                Grid.Row="1"
                 Direction="Row"
                 AlignItems="Center"
                 JustifyContent="SpaceAround"
@@ -40,22 +34,19 @@
                 <Label Text="This is Flex layout"/>
                 <Label Text="This is Flex layout"/>
             </FlexLayout>
-            
-            <ScrollView Grid.Row="2"
-                        Orientation="Horizontal">
+            <ScrollView Orientation="Horizontal">
                 <FlexLayout
                     Direction="Row">
                     <Image 
-                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo_final.png}" />
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final-embedded.png}" />
                     <Image 
-                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo_final.png}" />
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final-embedded.png}" />
                     <Image 
-                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo_final.png}" />
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final-embedded.png}" />
                     <Image 
-                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo_final.png}" />
-
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final-embedded.png}" />
                 </FlexLayout>
             </ScrollView>
-        </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

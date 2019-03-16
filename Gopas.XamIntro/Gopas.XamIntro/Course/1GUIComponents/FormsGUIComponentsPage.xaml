@@ -14,7 +14,7 @@
                     Text="This is simple Label"
                     HorizontalOptions="Center"/>
                 <Image 
-                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo_final.png}" />
+                    Source="{localForPage:ImageResourceExtension Gopas.XamIntro.Images.logo-final-embedded.png}" />
                 <Image Source="logo_final.png"/>
                 <BoxView 
                     Color="Blue"  
