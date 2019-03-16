@@ -144,13 +144,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>1.10.0</Version>
+      <Version>1.13.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>1.10.0</Version>
+      <Version>1.13.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Push">
-      <Version>1.10.0</Version>
+      <Version>1.13.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder">
       <Version>2.2.0</Version>
@@ -164,11 +164,14 @@
     <PackageReference Include="sqlite-net-pcl">
       <Version>1.5.231</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Essentials">
-      <Version>1.0.0</Version>
+    <PackageReference Include="Win2D.uwp">
+      <Version>1.23.0</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>1.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gopas.XamIntro\Gopas.XamIntro.csproj">
