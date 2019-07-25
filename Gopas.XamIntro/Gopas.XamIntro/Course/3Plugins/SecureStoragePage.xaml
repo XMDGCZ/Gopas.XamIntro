@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Gopas.XamIntro.Course._3Plugins.SecureStoragePage"
+             x:Name="This">
+    <ContentPage.BindingContext>
+        <x:Reference Name="This" />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding InfoLabel}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                />
+            <Entry Placeholder="Key" Text="{Binding Key}"/>
+            <Entry Placeholder="Value" Text="{Binding Value}"/>
+            <Button Text="Save to secure storage" Command="{Binding SaveCommand}"/>
+            <Button Text="Get from secure storage" Command="{Binding GetCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

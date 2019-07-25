@@ -2,7 +2,7 @@
 using Gopas.XamIntro.Course._1GUIComponents;
 using Gopas.XamIntro.Course._2Navigation;
 using Gopas.XamIntro.Course._2Navigation.SimpleMasterDetailPageFolder;
-using Gopas.XamIntro.Course._3Connectivity;
+using Gopas.XamIntro.Course._3Plugins;
 using Gopas.XamIntro.Course._4REST;
 using Gopas.XamIntro.Course._5DependencyService;
 using Gopas.XamIntro.Course._6Push;
@@ -50,7 +50,8 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 ShortName = "Plugins",
                 LongName = "Plugins"
             };
-            section.Add(new MasterMenuItemVM { Title = "Connectivity", TargetType = typeof(XamarinEssentialsPage) });
+            section.Add(new MasterMenuItemVM { Title = "Connectivity", TargetType = typeof(ConnectivityPage) });
+            section.Add(new MasterMenuItemVM { Title = "Secure storage", TargetType = typeof(SecureStoragePage) });
             MenuItems.Add(section);
 
             section = new GroupedVM()

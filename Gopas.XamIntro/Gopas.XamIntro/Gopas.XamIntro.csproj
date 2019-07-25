@@ -58,6 +58,9 @@
     <Compile Update="Course\2Navigation\SimpleNavigationPage.xaml.cs">
       <DependentUpon>SimpleNavigationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Course\3Plugins\ConnectivityPage.xaml.cs">
+      <DependentUpon>ConnectivityPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Course\5DependencyService\LocalNotificationpage.xaml.cs">
       <DependentUpon>LocalNotificationpage.xaml</DependentUpon>
     </Compile>
@@ -118,7 +121,10 @@
     <EmbeddedResource Update="Course\2Navigation\SimpleTabbedPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Course\3Connectivity\XamarinEssentialsPage.xaml">
+    <EmbeddedResource Update="Course\3Plugins\ConnectivityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\3Plugins\SecureStoragePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Course\4REST\RestASP.xaml">

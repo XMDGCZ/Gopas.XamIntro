@@ -9,12 +9,12 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
-namespace Gopas.XamIntro.Course._3Connectivity
+namespace Gopas.XamIntro.Course._3Plugins
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class XamarinEssentialsPage : ContentPage
+	public partial class ConnectivityPage : ContentPage
 	{
-		public XamarinEssentialsPage ()
+		public ConnectivityPage ()
 		{
 			InitializeComponent ();
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
