@@ -9,6 +9,7 @@ using Gopas.XamIntro.Course._6Push;
 using Gopas.XamIntro.Course._7Database;
 using Gopas.XamIntro.Course._7Database.SQLite;
 using Gopas.XamIntro.Course._8MVVM.View;
+using Gopas.XamIntro.Course._9Scanning;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -98,6 +99,13 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 LongName = "MVVM"
             };
             section.Add(new MasterMenuItemVM { Title = "Binding", TargetType = typeof(PageView) });
+
+            section = new GroupedVM()
+            {
+                ShortName = "Skenování",
+                LongName = "Skenování"
+            };
+            section.Add(new MasterMenuItemVM { Title = "Scanning", TargetType = typeof(CodeScanningPage) });
             MenuItems.Add(section);
         }
 

@@ -20,7 +20,7 @@ namespace Gopas.XamIntro.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
+            ZXing.Net.Mobile.Forms.WindowsUniversal.ZXingScannerViewRenderer.Init();
             LoadApplication(new Gopas.XamIntro.App());
         }
     }
