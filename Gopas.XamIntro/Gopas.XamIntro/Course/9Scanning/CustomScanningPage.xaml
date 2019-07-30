@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:Gopas.XamIntro.Course._9Scanning"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             mc:Ignorable="d"
+             x:Class="Gopas.XamIntro.Course._9Scanning.CustomScanningPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Flash" Command="{Binding FlashCommand}"/>
+    </ContentPage.ToolbarItems>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <zxing:ZXingScannerView x:Name="scanView" 
+                                    IsTorchOn="{Binding IsTorchOn}"
+                                    IsScanning="{Binding IsScanning}"
+                                    Result="{Binding Result, Mode=TwoWay}"
+                                    ScanResultCommand="{Binding OnScannedCommand}"/>
+            <zxing:ZXingDefaultOverlay x:Name="scanOverlay"/>
+        </Grid>
+</ContentPage>

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Name="This"
-             x:Class="Gopas.XamIntro.Course._9Scanning.CodeScanningPage">
+             x:Class="Gopas.XamIntro.Course._9Scanning.ScanningPage">
     <ContentPage.BindingContext>
         <x:Reference Name="This" />
     </ContentPage.BindingContext>
@@ -15,6 +15,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Button Text="Scan" Command="{Binding NavigateToScanPageCommand}"/>
+            <Button Text="Custom Scanning page" Command="{Binding NavigateToCustomScanPageCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

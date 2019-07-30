@@ -11,13 +11,16 @@ using ZXing.Net.Mobile.Forms;
 namespace Gopas.XamIntro.Course._9Scanning
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CodeScanningPage : ContentPage
+    public partial class ScanningPage : ContentPage
     {
         public Command NavigateToScanPageCommand { get; set; }
-        public CodeScanningPage()
+        public Command NavigateToCustomScanPageCommand { get; set; }
+        public ScanningPage()
         {
             NavigateToScanPageCommand = new Command(async () => await NavgiateToScanPage());
+            NavigateToCustomScanPageCommand = new Command(async () => await NavigateToCustomScanningPage());
             InitializeComponent();
+
         }
 
         async Task NavgiateToScanPage()
@@ -33,6 +36,13 @@ namespace Gopas.XamIntro.Course._9Scanning
             };
 
             await Navigation.PushAsync(scanPage);
+        }
+
+        async Task NavigateToCustomScanningPage()
+        {
+            var page = new CustomScanningPage();
+            await Navigation.PushAsync(page);
+            await page.PageClosedTask;
         }
     }
 }
