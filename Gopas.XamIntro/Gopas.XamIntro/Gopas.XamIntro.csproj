@@ -36,8 +36,8 @@
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.618606" />
-    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
-    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
+    <PackageReference Include="ZXing.Net.Mobile" Version="2.3.1" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +68,9 @@
     </Compile>
     <Compile Update="Course\5DependencyService\ToastPage.xaml.cs">
       <DependentUpon>ToastPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Course\9Scanning\ScanningPage.xaml.cs">
+      <DependentUpon>ScanningPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -153,7 +156,10 @@
     <EmbeddedResource Update="Course\8MVVM\View\PageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Course\9Scanning\CodeScanningPage.xaml">
+    <EmbeddedResource Update="Course\9Scanning\ScanningPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Course\9Scanning\CustomScanningPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -105,7 +105,7 @@ namespace Gopas.XamIntro.BaseMasterDetailPage.VM
                 ShortName = "Skenování",
                 LongName = "Skenování"
             };
-            section.Add(new MasterMenuItemVM { Title = "Scanning", TargetType = typeof(CodeScanningPage) });
+            section.Add(new MasterMenuItemVM { Title = "Scanning", TargetType = typeof(ScanningPage) });
             MenuItems.Add(section);
         }
 
