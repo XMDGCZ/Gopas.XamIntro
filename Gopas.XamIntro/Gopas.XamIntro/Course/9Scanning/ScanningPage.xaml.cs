@@ -16,6 +16,16 @@ namespace Gopas.XamIntro.Course._9Scanning
     {
         public Command NavigateToScanPageCommand { get; set; }
         public Command NavigateToCustomScanPageCommand { get; set; }
+        private string scanningResutlText = "Scan your code";
+
+        public string ScanningResutlText
+        {
+            get { return scanningResutlText; }
+            set { scanningResutlText = value;
+                OnPropertyChanged("ScanningResutlText");
+            }
+        }
+
         public ScanningPage()
         {
             NavigateToScanPageCommand = new Command(async () => await NavigateToScanPage());
@@ -38,6 +48,7 @@ namespace Gopas.XamIntro.Course._9Scanning
                 {
                     Navigation.PopAsync();
                     DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    ScanningResutlText = result.Text;
                 });
             };
             await Navigation.PushAsync(scanPage);
@@ -54,6 +65,7 @@ namespace Gopas.XamIntro.Course._9Scanning
             MessagingCenter.Subscribe<ZXing.Result>(this, "CodeScanningCompleted", (code) =>
             {
                 Debug.WriteLine($"Text from Scanning Page: {code.Text}");
+                ScanningResutlText = code.Text;
             });
         }
     }

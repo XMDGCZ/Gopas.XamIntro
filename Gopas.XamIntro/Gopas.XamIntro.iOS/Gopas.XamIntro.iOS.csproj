@@ -56,8 +56,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>iPhone Developer: maly.david.it@gmail.com (M2C8H554X8)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>
-    </CodesignEntitlements>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>iOS Team Provisioning Profile: com.companyname.Gopas.XamIntro</CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />

@@ -27,6 +27,8 @@ namespace Gopas.XamIntro.Course._9Scanning
         {
             scanView.Options.DelayBetweenAnalyzingFrames = 5;
             scanView.Options.DelayBetweenContinuousScans = 5;
-        }
+            scanView.Options.DisableAutofocus = false;
+           
+                }
     }
 }
