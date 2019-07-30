@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,32 +18,43 @@ namespace Gopas.XamIntro.Course._9Scanning
         public Command NavigateToCustomScanPageCommand { get; set; }
         public ScanningPage()
         {
-            NavigateToScanPageCommand = new Command(async () => await NavgiateToScanPage());
-            NavigateToCustomScanPageCommand = new Command(async () => await NavigateToCustomScanningPage());
+            NavigateToScanPageCommand = new Command(async () => await NavigateToScanPage());
+            NavigateToCustomScanPageCommand = new Command(async () => await GetCodeFromCustomScanningPage());
             InitializeComponent();
-
         }
 
-        async Task NavgiateToScanPage()
+        /// <summary>
+        /// Use standard scanning page
+        /// </summary>
+        /// <returns></returns>
+        async Task NavigateToScanPage()
         {
             ZXingScannerPage scanPage = new ZXingScannerPage();
-            scanPage.OnScanResult += (result) => {
+            scanPage.OnScanResult += (result) =>
+            {
                 scanPage.IsScanning = false;
 
-                Device.BeginInvokeOnMainThread(() => {
+                Device.BeginInvokeOnMainThread(() =>
+                {
                     Navigation.PopAsync();
                     DisplayAlert("Scanned Barcode", result.Text, "OK");
                 });
             };
-
             await Navigation.PushAsync(scanPage);
         }
 
-        async Task NavigateToCustomScanningPage()
+        /// <summary>
+        /// Use Custom scanning page
+        /// </summary>
+        /// <returns></returns>
+        async Task GetCodeFromCustomScanningPage()
         {
             var page = new CustomScanningPage();
             await Navigation.PushAsync(page);
-            await page.PageClosedTask;
+            MessagingCenter.Subscribe<ZXing.Result>(this, "CodeScanningCompleted", (code) =>
+            {
+                Debug.WriteLine($"Text from Scanning Page: {code.Text}");
+            });
         }
     }
 }

@@ -13,24 +13,20 @@ namespace Gopas.XamIntro.Course._9Scanning
     public partial class CustomScanningPage : ContentPage
     {
         CustomScanningPageVM viewModel;
-        public Task PageClosedTask { get { return tcs.Task; } }
-
-
-
-
-        public CustomScanningPage()
+       public CustomScanningPage()
         {
             InitializeComponent();
-            tcs = new TaskCompletionSource<ZXing.Result>();
-            viewModel = new CustomScanningPageVM(tcs, Navigation);
+            SetUpScanner();
 
+            // set up ViewModel
+            viewModel = new CustomScanningPageVM(Navigation);
             this.BindingContext = viewModel;
-  
+        }
 
+        void SetUpScanner()
+        {
             scanView.Options.DelayBetweenAnalyzingFrames = 5;
             scanView.Options.DelayBetweenContinuousScans = 5;
         }
-
-        private TaskCompletionSource<ZXing.Result> tcs { get; set; }
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Gopas.XamIntro.Course._9Scanning
 {
     class CustomScanningPageVM : ViewModelBase
     {
+        #region Data binding
         public Command FlashCommand { get; set; }
         public Command OnScannedCommand { get; set; }
         bool isTorchOn = false;
@@ -62,38 +58,49 @@ namespace Gopas.XamIntro.Course._9Scanning
                 OnPropertyChanged();
             }
         }
-
-        TaskCompletionSource<ZXing.Result> tcs { get; }
+        #endregion
         INavigation Navigation { get; }
 
-        public CustomScanningPageVM(TaskCompletionSource<ZXing.Result> tcs, INavigation navigation)
+        public CustomScanningPageVM(INavigation navigation)
         {
+            Navigation = navigation;
             FlashCommand = new Command(Flash);
             OnScannedCommand = new Command(OnScanned);
 
             isScanning = true;
-            this.tcs = tcs;
-            Navigation = navigation;
         }
 
+        /// <summary>
+        /// Turn on or off flashligh
+        /// </summary>
         void Flash()
         {
             IsTorchOn = !IsTorchOn;
         }
-
+        /// <summary>
+        /// Triggered when scanning is completed
+        /// </summary>
         void OnScanned()
         {
+            // pause scanning
             isAnalyzing = false;
-            string message = String.Format("I read a barcode and found the value: {0}", Result.Text);
-            Debug.WriteLine(message);
 
-            tcs.SetResult(result);
+            MessagingCenter.Send(Result, "CodeScanningCompleted");
+            ClosePage();
+
+            // only if you want to continue scanning
+            //isAnalyzing = true;
+        }
+
+        /// <summary>
+        /// Close this page after populating results
+        /// </summary>
+        void ClosePage()
+        {
             Device.BeginInvokeOnMainThread(async () =>
             {
-                await Navigation.PopAsync();
+               await Navigation.PopAsync();
             });
-
-            isAnalyzing = true;
         }
     }
 }
