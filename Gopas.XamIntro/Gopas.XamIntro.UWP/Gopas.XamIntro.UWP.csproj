@@ -156,7 +156,7 @@
       <Version>2.2.4</Version>
     </PackageReference>
     <PackageReference Include="ServiceStack">
-      <Version>5.5.0</Version>
+      <Version>5.9.2</Version>
     </PackageReference>
     <PackageReference Include="ServiceStack.HttpClient">
       <Version>5.5.0</Version>
